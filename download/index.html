@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FEniCS versions and release notes &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="next" title="Contributed packages" href="contributed_packages.html" />
+    <link rel="prev" title="The team behind the FEniCS Project" href="../about/team.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="download"></span><div class="section" id="fenics-versions-and-release-notes">
+<h1>FEniCS versions and release notes<a class="headerlink" href="#fenics-versions-and-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>FEniCS can be installed from binary files or compiled from source
+code. Different installation methods are described on this page.
+Visit the <a class="reference internal" href="troubleshooting.html#troubleshooting"><em>troubleshooting page</em></a> if you have
+problems installing FEniCS.</p>
+<p>The latest stable release of FEniCS is version 1.6.0, which was on
+released 2015-07-28. For more information about FEniCS releases and
+changes, take a look at <a class="reference internal" href="../releases/index.html#release-notes"><em>Release notes for FEniCS</em></a>.  For information on
+accessing the development repositories, see <a class="reference internal" href="../contributing/index.html#developers"><em>Contributing</em></a>.</p>
+<div class="section" id="binary-packages">
+<h2>Binary packages<a class="headerlink" href="#binary-packages" title="Permalink to this headline">¶</a></h2>
+<p>This is the main FEniCS download, suitable for most users. It includes
+everything needed to get you started with FEniCS.</p>
+<p style="text-align:center;">
+  <a href="/download/debian_details.html"><img src="/_images/debian_large.png" alt="Download for Debian"></A>
+  <a href="/download/ubuntu_details.html"><img src="/_images/ubuntu_large.png" alt="Download for Ubuntu"></A>
+  <a href="/download/osx_details.html"><img src="/_images/mac_large.png" alt="Download for OS X"></A>
+  <a href="/download/windows_details.html"><img src="/_images/windows_large.png" alt="Download for Windows"></A>
+</p>
+<p>For information on user contributed binary packages, see
+<a class="reference internal" href="contributed_packages.html#contributed-packages"><em>Contributed packages</em></a>.</p>
+</div>
+<div class="section" id="installation-from-conda-packages">
+<h2>Installation from <em>conda</em> packages<a class="headerlink" href="#installation-from-conda-packages" title="Permalink to this headline">¶</a></h2>
+<p>Whether you are already using the <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a> Python distribution from Continuum
+Analytics or just their <a class="reference external" href="http://conda.io/">conda</a> package manager in Linux you can already install
+FEniCS precompiled binaries. They are not part of the official Anaconda
+installation but they can be downloaded from a <a class="reference external" href="https://binstar.org/">binstar</a> channel:</p>
+<div class="highlight-python"><div class="highlight"><pre>conda create --name fenics27 python=2.7
+source activate fenics27
+conda install fenics --channel juanlu001
+</pre></div>
+</div>
+<p>For troubleshooting and alternative options for older systems, see
+<a class="reference internal" href="installation_using_conda.html#installation-using-conda"><em>Binary installation using conda</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These packages are provided by Juan Luis Cano and their sources
+can be found at <a class="reference external" href="https://github.com/juanlu001/fenics-recipes">https://github.com/juanlu001/fenics-recipes</a>.</p>
+</div>
+</div>
+<div class="section" id="virtual-machine-images">
+<h2>Virtual machine images<a class="headerlink" href="#virtual-machine-images" title="Permalink to this headline">¶</a></h2>
+<p>A virtual machine image that includes the most recent FEniCS release
+is available at
+<a class="reference external" href="http://fenicsproject.org/pub/virtual/fenics-latest.ova">http://fenicsproject.org/pub/virtual/fenics-latest.ova</a>. The image can
+be run using a virtual machine manager, such as <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a>. The username and password for the
+virtual machine are both <tt class="docutils literal"><span class="pre">fenics</span></tt>.</p>
+<p>The virtual machine image is recommended for systems for which a
+binary installer is not available. The image is particularly suitable
+when a consistent FEniCS environment across systems is required, such
+as courses using FEniCS.</p>
+<p>The image requires a 64-bit host operating system.</p>
+</div>
+<div class="section" id="installation-from-source-fenics-install-sh">
+<h2>Installation from source (<cite>fenics-install.sh</cite>)<a class="headerlink" href="#installation-from-source-fenics-install-sh" title="Permalink to this headline">¶</a></h2>
+<p>You may also choose to install FEniCS directly from source. This may be
+done by running the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>curl -s http://fenicsproject.org/fenics-install.sh | bash
+</pre></div>
+</div>
+<p>Running this command will build a local installation of FEniCS, including
+essential dependencies such as PETSc. The installation relies on
+<a class="reference external" href="http://hashdist.github.io/">HashDist</a>. Before running the script,
+you may wish to download and inspect its contents.</p>
+<p>Requirements:</p>
+<ul class="simple">
+<li>A standard Unix environment (Linux or OSX)</li>
+<li>The Git version control system, available as the package <tt class="docutils literal"><span class="pre">git</span></tt> in
+most Linux and Mac package managers</li>
+<li>OSX users will need to install Xcode from the Mac App Store</li>
+</ul>
+</div>
+<div class="section" id="nightly-snapshots-for-ubuntu-and-osx">
+<h2>Nightly snapshots for Ubuntu and OSX<a class="headerlink" href="#nightly-snapshots-for-ubuntu-and-osx" title="Permalink to this headline">¶</a></h2>
+<p>Every night, FEniCS snapshot releases are automatically generated for
+Ubuntu and Mac OS X. They are made available at our <a class="reference internal" href="snapshot_releases.html#snapshot-releases"><em>snapshots page</em></a>.</p>
+</div>
+<div class="section" id="data-and-meshes">
+<h2>Data and meshes<a class="headerlink" href="#data-and-meshes" title="Permalink to this headline">¶</a></h2>
+<p>A collection of meshes for free use with FEniCS is available
+<a class="reference internal" href="data.html#data"><em>here</em></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

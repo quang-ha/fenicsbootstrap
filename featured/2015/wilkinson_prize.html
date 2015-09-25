@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dolfin-adjoint wins the 2015 Wilkinson Prize for Numerical Software &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Featured articles of the FEniCS project" href="../index.html" />
+    <link rel="next" title="FEniCS‘14 at The Center in Paris, University of Chicago, 16 – 17 June 2014" href="../2014/fenics14_paris.html" />
+    <link rel="prev" title="Solving PDEs over manifolds in FEniCS" href="manifolds_in_fenics.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dolfin-adjoint-wins-the-2015-wilkinson-prize-for-numerical-software">
+<h1>Dolfin-adjoint wins the 2015 Wilkinson Prize for Numerical Software<a class="headerlink" href="#dolfin-adjoint-wins-the-2015-wilkinson-prize-for-numerical-software" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Featured article 2015-06-12</div>
+<div class="line"><em>Created by Simon W. Funke and Marie E. Rognes</em></div>
+</div>
+<p>Every four years the Numerical Algorithms Group (NAG), the National
+Physical Laboratory (NPL) and Argonne National Laboratory (ANL) award
+the Wilkinson Prize for Numerical Software in honour of the
+outstanding contributions of Dr James Hardy Wilkinson to the field of
+numerical software. The 2015 Wilkinson Prize for Numerical Software
+will be awarded to the Patrick E. Farrell (University of Oxford),
+Simon W. Funke (Simula Research Laboratory), David A. Ham (Imperial
+College London) and Marie E. Rognes (Simula Research Laboratory) for
+dolfin-adjoint[1]. The presentation of the award will take place at the
+International Congress on Industrial and Applied Mathematics
+(ICIAM 2015) in Beijing, August 10-14, 2015.</p>
+<p>Speaking of the 2015 winning software, Mike Dewar, Chair of the
+Wilkinson Prize Board of Trustees and Chief Technical Officer at NAG,
+said [2]: &#8220;dolfin-adjoint is an excellent piece of software that can
+solve problems in a range of application areas. Through its elegant
+use of high-level abstractions it makes performing what is usually a
+very challenging piece of computation seem extremely natural.&#8221;</p>
+<a class="reference internal image-reference" href="../../_images/approach.png"><img alt="../../_images/approach.png" src="../../_images/approach.png" style="width: 768.0px; height: 180.0px;" /></a>
+<p>Figure 1: Dolfin-adjoint derives the adjoint and tangent linear models
+from the high-level problem specification in FEniCS</p>
+<p>The dolfin-adjoint project (www.dolfin-adjoint.org) is a FEniCS
+Application that automatically derives and solves adjoint and tangent
+linear equations from the high-level problem specification. By adding
+a few lines of code to an existing FEniCS model, dolfin-adjoint
+computes tangent linear and adjoint solutions, gradients and Hessian
+actions of arbitrary user-specified functionals, and uses these
+derivatives in combination with sophisticated optimization algorithms
+or to conduct stability analyses. The derived models use an advanced
+checkpointing scheme, run natively in parallel and achieve
+theoretically optimal performance, all of which are key properties
+that are difficult to achieve with traditional algorithmic
+differentiation techniques.</p>
+<a class="reference internal image-reference" href="../../_images/code.png"><img alt="../../_images/code.png" src="../../_images/code.png" style="width: 246.15px; height: 246.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/poisson-topology-2d.png"><img alt="../../_images/poisson-topology-2d.png" src="../../_images/poisson-topology-2d.png" style="width: 247.0px; height: 247.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/poisson-topology-3d.png"><img alt="../../_images/poisson-topology-3d.png" src="../../_images/poisson-topology-3d.png" style="width: 274.45px; height: 255.2px;" /></a>
+<p>Figure 2: Example of a topology optimisation for the design of a heat
+sink with dolfin-adjoint. The left image shows an implementation
+excerpt (the full code has 56 lines). The middle and the right images
+show the optimal sink material distribution in 2D and 3D,
+respectively.</p>
+<p>The Wilkinson Prize was established to honour the outstanding
+contributions of Dr James Hardy Wilkinson to the field of numerical
+software. Speaking of the Wilkinson Prize in 2014, Dewar said [3]:
+“High quality numerical algorithms underpin much of the software that
+we all use on a daily basis, yet the skills needed to implement them
+are rarely given the recognition that they deserve.  With the
+Wilkinson Prize we seek to redress this balance and celebrate the
+achievements of talented younger individuals in this area.  We believe
+that the Wilkinson Prize is unique in that all the software entered is
+examined and tested by the reviewers, and the award is made primarily
+on the basis of the quality of the software, its documentation, and
+its testing regime.”</p>
+<div class="section" id="references-and-acknowledgments">
+<h2>References and acknowledgments<a class="headerlink" href="#references-and-acknowledgments" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="http://www.nag.com/other/WilkinsonPrize.html">http://www.nag.com/other/WilkinsonPrize.html</a></p>
+<p>[2] <a class="reference external" href="http://www.scientificcomputing.com/news/2015/06/partial-differential-equations-dolfin-adjoint-wins-2015-wilkinson-prize-numerical-software">http://www.scientificcomputing.com/news/2015/06/partial-differential-equations-dolfin-adjoint-wins-2015-wilkinson-prize-numerical-software</a></p>
+<p>[3] <a class="reference external" href="http://www.nag.com/awarding-outstanding-achievements-in-numerical-software-wilkinson-prize">http://www.nag.com/awarding-outstanding-achievements-in-numerical-software-wilkinson-prize</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation for dev &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="Documentation for FEniCS 1.6.0" href="index.html" />
+    <link rel="next" title="List of all versions of the documentation" href="all.html" />
+    <link rel="prev" title="Documentation for FEniCS 1.6.0" href="doc_1.6.0.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documentation-for-fenics-dev">
+<h1>Documentation for FEniCS dev<a class="headerlink" href="#documentation-for-fenics-dev" title="Permalink to this headline">¶</a></h1>
+<p>Our documentation includes a book(!), a collection of documented demo
+programs, and complete references for the FEniCS application
+programming interface (API). Note that the FEniCS API is documented
+separately for each FEniCS component. The most important interfaces
+are those of the C++/Python problem solving environment <a class="reference internal" href="../about/components.html#about-components-dolfin"><em>DOLFIN</em></a> and the form language <a class="reference internal" href="../about/components.html#about-components-ufl"><em>UFL</em></a>.</p>
+<p>(<em>This page accesses the FEniCS dev documentation. Not the
+version you are looking for? See</em> <a class="reference internal" href="all.html"><em>all versions</em></a>.)</p>
+<div id="main">
+<div id="container" class="feature">
+  <div id="content">
+    <div id="sub-feature">
+      <div id="front-block-1" class="front-block block">
+        <h2> The FEniCS Tutorial </h2><p>A good starting point for new users is the <a class="reference internal" href="tutorial/index.html"><em>FEniCS Tutorial</em></a>. The tutorial will help you get quickly up and
+running with solving differential equations in FEniCS. The tutorial
+focuses exclusively on the FEniCS Python interface, since this is the
+simplest approach to exploring FEniCS for beginners.</p>
+<h2>The FEniCS Book</h2>
+<a href="/book/"><img alt=''src='/_static/images/fenics_book_cover.png' class='avatar avatar-84 photo' width='84'/></a><p><a class="reference internal" href="../book/index.html#book"><em>The FEniCS Book</em></a>, <em>Automated Solution of Differential
+Equations by the Finite Element Method</em>, is a comprehensive (700
+pages) book documenting the mathematical methodology behind the FEniCS
+Project and the software developed as part of the FEniCS Project. The
+FEniCS Tutorial is included as the opening chapter of the FEniCS Book.</p>
+<h2>The FEniCS Manual</h2><p><a class="reference external" href="http://launchpad.net/fenics-book/trunk/final/+download/fenics-manual-2011-10-31.pdf">The FEniCS Manual</a>
+is a 200-page excerpt from the FEniCS Book, including the FEniCS
+Tutorial, an introduction to the finite element method and
+documentation of DOLFIN and UFL.</p>
+<h2>Additional Documentation</h2><p><a class="reference external" href="http://hplgit.github.io/fenics-mixed/doc/web/index.html">Mixing software with FEniCS</a> is a
+tutorial on how to combine FEniCS applications in Python with software
+written in other languages.</p>
+</div><!-- #front-block-1 .front-block .block-->
+
+<div id="front-block-2" class="front-block block">
+  <h2>Demos</h2><p>A simple way to build your first FEniCS application is to copy and
+modify one of the existing demos:</p>
+<ul class="simple">
+<li><a class="reference external" href="../documentation/dolfin/dev/python/demo/index.html">Documented DOLFIN demos (Python)</a></li>
+<li><a class="reference external" href="../documentation/dolfin/dev/cpp/demo/index.html">Documented DOLFIN demos (C++)</a></li>
+</ul>
+<p>The demos are <a class="reference internal" href="demos.html#finding-demos"><em>already installed on your system</em></a> or can
+be found in the <tt class="docutils literal"><span class="pre">demo</span></tt> directory of the DOLFIN source tree.</p>
+<h2>Quick Programmer's References</h2><p>Some of the classes and functions in DOLFIN are more frequently used
+than others. To learn more about these, take a look at the</p>
+<ul class="simple">
+<li><a class="reference external" href="../documentation/dolfin/dev/python/quick_reference.html">Basic classes and functions in DOLFIN (Python)</a></li>
+<li><a class="reference external" href="../documentation/dolfin/dev/cpp/quick_reference.html">Basic classes and functions in DOLFIN  (C++)</a></li>
+</ul>
+<h2>Complete Programmer's References</h2><ul class="simple">
+<li><a class="reference external" href="../documentation/dolfin/dev/python/genindex.html">All classes and functions in DOLFIN (Python)</a></li>
+<li><a class="reference external" href="../documentation/dolfin/dev/cpp/genindex.html">All classes and functions in DOLFIN (C++)</a></li>
+<li><a class="reference external" href="../documentation/ufl/dev/genindex.html">All classes and functions in UFL</a></li>
+</ul>
+</div><!-- #front-block-2 .front-block .block-->
+</div><!-- #sub-feature -->
+  </div><!-- #content -->
+    </div><!-- #container .feature -->
+      </div><!-- #main --><div class="section" id="release-notes">
+<h2>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
+<p>If you are updating your application code to a new FEniCS release,
+make sure to check the <em class="xref std std-ref">release notes</em> where you will
+find detailed information about new features and interface changes.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

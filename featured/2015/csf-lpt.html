@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Subject-specific simulations of cerebrospinal fluid flow and drug delivery &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Featured articles of the FEniCS project" href="../index.html" />
+    <link rel="next" title="Solving PDEs over manifolds in FEniCS" href="manifolds_in_fenics.html" />
+    <link rel="prev" title="Featured articles of the FEniCS project" href="../index.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="subject-specific-simulations-of-cerebrospinal-fluid-flow-and-drug-delivery">
+<h1>Subject-specific simulations of cerebrospinal fluid flow and drug delivery<a class="headerlink" href="#subject-specific-simulations-of-cerebrospinal-fluid-flow-and-drug-delivery" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Featured article 2015-08-03</div>
+<div class="line"><em>Created by P.T. Haga, M. Mortensen, K.-A. Mardal and M. Kuchta</em></div>
+</div>
+<p>The cerebrospinal fluid (CSF) surrounds the central nervous system
+(CNS). For this reason, drugs are often administered through the CSF
+for distribution to desired regions of the CNS. However, because of
+large subject-specific variations and a complex oscillating flow, it
+has been proven difficult to predict and control the addition of drugs
+<a class="footnote-reference" href="#id6" id="id1">[1]</a>. The master thesis of P.T Haga <a class="footnote-reference" href="#id7" id="id2">[2]</a> aimed to simulate the flow
+and drug transport in the CSF in a subject-specific model of the
+cranial region of the spine using FEniCS. This article briefly
+describes the results of the study.</p>
+<div class="section" id="subject-specific-computational-mesh">
+<h2>Subject-specific computational mesh<a class="headerlink" href="#subject-specific-computational-mesh" title="Permalink to this headline">¶</a></h2>
+<p>A three dimensional geometry of the cervical subarachnoid space is
+shown in Figure 1. The geometry was provided by Dr. Bryn Martin at the
+Conquer Chiari Research Center at the University of Akron, and more
+information can be found in <a class="footnote-reference" href="#id8" id="id3">[3]</a>. The geometry contains idealized
+nerve roots and denticulate ligaments (NRDL) constructed manualy based
+on known anatomy from literature.</p>
+<a class="reference internal image-reference" href="../../_images/geometry.png"><img alt="../../_images/geometry.png" class="align-center" src="../../_images/geometry.png" style="width: 676.0px; height: 370.0px;" /></a>
+<p><strong>Figure 1:</strong> SSS geometry and computational surface mesh. (a)
+Complete surface model. (b) Transparent model showing nerve roots and
+denticulate ligaments. (c) Surface elements of the final computational
+mesh.</p>
+</div>
+<div class="section" id="lagrangian-particle-tracking">
+<h2>Lagrangian Particle Tracking<a class="headerlink" href="#lagrangian-particle-tracking" title="Permalink to this headline">¶</a></h2>
+<p>Due to very low diffusivity of the drugs, numerical issues may arise
+when using the Finite Element Method on the advection-diffusion
+equation. The Streamline Upwind/Petrov-Galerkin and Discontinuous
+Galerkin methods would be natural methods to implement in such
+convection-dominated scenarios. However, because the drug diffusivity
+is reported to be 2500 times smaller than the kinematic viscosity
+<span class="math">\(\nu\)</span>, the Gibbs phenomenon was observed in simplified
+test-cases. The Lagrangian Particle Tracking is a method where such
+issues are not present. This method uses discrete particles and
+utilizes the velocity field to compute the position of the
+particles. In other words, for every particle, we solve the equation</p>
+<div class="math">
+\[\frac{\mathrm{d} x_p}{\mathrm{d} t} = u(x_p,t),\]</div>
+<p>where <span class="math">\(x_p\)</span> is the position of a particle <span class="math">\(p\)</span>, and
+<span class="math">\(u\)</span> is the velocity field. The particle density in one cell is
+computed simply by using the formula</p>
+<div class="math">
+\[\rho_{\kappa} = \frac{\text{number of particles in cell}}{\text{volume of cell}}.\]</div>
+<p>The Lagrangian Particle Tracking solver implemented for FEniCS <a class="footnote-reference" href="#id10" id="id4">[5]</a>
+made by M. Kuchta and M. Mortensen, uses an object-oriented frame,
+meaning that all particles are represented by objects. At every
+time-step, the particles are moved subject to the velocity field,
+given by a dolfin-function <tt class="code docutils literal"><span class="pre">u</span></tt> at time <tt class="code docutils literal"><span class="pre">t</span></tt> and <tt class="code docutils literal"><span class="pre">u_1</span></tt>
+at time <tt class="code docutils literal"><span class="pre">t-dt</span></tt>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LagrangianParticles</span> <span class="kn">import</span> <span class="n">LagrangianParticles</span><span class="p">,</span> <span class="n">ParticleSource</span>
+
+<span class="o">...</span>
+
+<span class="c"># Function space</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">VectorFunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s">&#39;CG&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>         <span class="c"># Velocity at t</span>
+<span class="n">u_1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>       <span class="c"># Velocity at t - dt</span>
+
+<span class="c"># Initialize Lagrangian Particle Solver</span>
+<span class="n">lp</span> <span class="o">=</span> <span class="n">LagrangianParticles</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="c"># Particle source</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ParticleSource</span><span class="p">(</span><span class="n">lp</span><span class="p">,</span> \
+        <span class="n">random_generator</span><span class="o">=</span><span class="n">RandomCircle</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="mf">0.15</span><span class="p">))</span>
+
+<span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">T</span><span class="p">:</span>
+
+        <span class="c"># Inject particles</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">injection_time</span><span class="p">:</span>
+                <span class="n">source</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>  <span class="c"># Injecting 500 particles every timestep</span>
+
+        <span class="o">....</span>
+
+        <span class="n">lp</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">u_1</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>
+
+        <span class="o">....</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cfd-simulations">
+<h2>CFD simulations<a class="headerlink" href="#cfd-simulations" title="Permalink to this headline">¶</a></h2>
+<p>The simulations were performed using the Open Source high-performance
+Navier-Stokes solver Oasis <a class="footnote-reference" href="#id9" id="id5">[4]</a> coupled with the Lagrangian Particle
+Tracking solver. The solver was run on the Abel supercomputer using 96
+cores. A simulation of 13 cardiac cycles, or 10.14 seconds, used
+approximately 7 physical hours, or 670 CPU-hours.</p>
+<p>The resulting velocity field revealed the formation of vortical
+structures in conjuction with the nerve roots and denticulate
+ligaments, as shown in Figure 2.</p>
+<img alt="../../_images/streamlines_csf.png" class="align-center" src="../../_images/streamlines_csf.png" />
+<p><strong>Figure 2:</strong> Streamlines of the cerebrospinal fluid shows vorticity
+around the nerve roots and denticulate ligaments.</p>
+<p>The particles were injected with a velocity corresponding to a 1 ml
+injection over 1 minute with a 22 gauge needle. 54 particles were
+injected every time-step giving a total of approximately 130.000
+particles after 5 cardiac cycles. Figure 3 shows an animation of the
+drug concentration during the 5 first cardiac cycles.</p>
+<img alt="../../_images/scalar_anim.gif" class="align-center" src="../../_images/scalar_anim.gif" />
+<p><strong>Figure 3:</strong> An animation of the drug concentration for the first 5
+cardiac cycles. The color represents the number of particles per
+<span class="math">\({\rm mm}^2\)</span>.</p>
+<p>Sensitivity analysis of lateral and longitudinal injection sites,
+injection angle and injection velocity was performed. This revealed a
+relatively large difference in drug spread with different longitudinal
+injection points. This result was even seen for injection points with
+small distance from each other. Further investigation of this
+phenomenon revealed that one reason for the large difference in drug
+spread is that jet streams are formed in certain narrow regions of the
+subarachnoid space. The drug was also found somewhat sensitive to
+different lateral injection point and injection angle, while a low
+sensitivity was seen for different injection velocities.</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Hocking, G. and Wildsmith, J. A. W. Intrathecal drug
+spread. British Journal of Anaesthesia,
+93(4):568–578, 2004. doi: 10.1093/bja/aeh204. URL
+<a class="reference external" href="http://bja.oxfordjournals.org/content/93/4/568.short">http://bja.oxfordjournals.org/content/93/4/568.short</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>P.T. Haga, Numerical simulations of advection-dominated scalar
+mixing with applications to spinal CSF flow and drug transport,
+MSc thesis, University of Oslo, <a class="reference external" href="http://bit.ly/1K23ieZ">http://bit.ly/1K23ieZ</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Soroush Heidari Pahlavian, Theresia Yiallourou, R. Shane Tubbs,
+Alexander C. Bunck, Francis Loth, Mark Goodin, Mehrdad Raisee,
+and Bryn A. Martin. The impact of spinal cord nerve roots and
+denticulate ligaments on cerebrospinal fluid dynamics in the
+cervical spine. PLoS ONE, 9(4):e91888, 04 2014. doi:
+10.1371/journal.pone.0091888. URL
+<a class="reference external" href="http://dx.doi.org/10.1371%2Fjournal.pone.0091888">http://dx.doi.org/10.1371%2Fjournal.pone.0091888</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>Mikael Mortensen and Kristian Valen-Sendstad. Oasis: A high-
+level/high-performance open source navier–stokes
+solver. Computer Physics Communications, 188(0):177 –
+188, 2015. ISSN 0010-4655. doi:
+<a class="reference external" href="http://dx.doi.org/10.1016/j.cpc.2014.10.026">http://dx.doi.org/10.1016/j.cpc.2014.10.026</a>. URL
+<a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0010465514003786">http://www.sciencedirect.com/science/article/pii/S0010465514003786</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[5]</a></td><td>The Lagrangian Particle Tracking solver
+<a class="reference external" href="https://github.com/MiroK/lagrangian-particles">https://github.com/MiroK/lagrangian-particles</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

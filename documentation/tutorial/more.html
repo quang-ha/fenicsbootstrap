@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>More Examples &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="FEniCS tutorial (Python)" href="index.html" />
+    <link rel="next" title="Miscellaneous Topics" href="misc.html" />
+    <link rel="prev" title="Handling Domains with Different Materials" href="materials.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="more-examples">
+<h1>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h1>
+<p>Many more topics could be treated in a FEniCS tutorial, e.g., how to
+solve systems of PDEs, how to work with mixed finite element methods,
+how to create more complicated meshes and mark boundaries, and how to
+create more advanced visualizations.  However, to limit the size of
+this tutorial, the examples end here.  There are, fortunately, a rich
+set of FEniCS demos.  The FEniCS documentation explains a collection
+of PDE solvers in detail: the Poisson equation, the mixed formulation
+for the Poission equation, the Biharmonic equation, the equations of
+hyperelasticity, the Cahn-Hilliard equation, and the incompressible
+Navier-Stokes equations.  Both Python and C++ versions of these
+solvers are explained.  An eigenvalue solver is also documented.  In
+the <tt class="docutils literal"><span class="pre">dolfin/demo</span></tt> directory of the DOLFIN source code tree you can
+find programs for these and many other examples, including the
+advection-diffusion equation, the equations of elastodynamics, a
+reaction-diffusion equation, various finite element methods for the
+Stokes problem, discontinuous Galerkin methods for the Poisson and
+advection-diffusion equations, and an eigenvalue problem arising from
+electromagnetic waveguide problem with Nedelec elements.  There are
+also numerous demos on how to apply various functionality in FEniCS,
+e.g., mesh refinement and error control, moving meshes (for ALE
+methods), computing functionals over subsets of the mesh (such as lift
+and drag on bodies in flow), and creating separate subdomain meshes
+from a parent mesh.</p>
+<p>The project cbc.solve (<a class="reference external" href="https://launchpad.net/cbc.solve">https://launchpad.net/cbc.solve</a>) offers
+more complete PDE solvers for the Navier-Stokes equations, the
+equations of hyperelasticity, fluid-structure interaction, viscous
+mantle flow, and the bidomain model of electrophysiology.  Most of
+these solvers are described in the &#8220;FEniCS book&#8221; <a class="reference internal" href="bib.html#fenics" id="id1">[FEniCS]</a>
+(<a class="reference external" href="https://launchpad.net/fenics-book">https://launchpad.net/fenics-book</a>).  Another project, cbc.rans
+(<a class="reference external" href="https://launchpad.net/cbc.rans">https://launchpad.net/cbc.rans</a>), offers an environment for very
+flexible and easy implementation of Navier-Stokes solvers and
+turbulence <a class="reference internal" href="bib.html#mortensen2011" id="id2">[Mortensen2011]</a> <a class="reference internal" href="bib.html#mortensen2011b" id="id3">[Mortensen2011b]</a>. For example, cbc.rans
+contains an elliptic relaxation model for turbulent flow involving 18
+nonlinear PDEs.  FEniCS proved to be an ideal environment for
+implementing such complicated PDE models.  The easy construction of
+systems of nonlinear PDEs in cbc.rans has been further generalized to
+simplify the implementation of large systems of nonlinear PDEs in
+general.  The functionality is found in the cbc.pdesys package
+(<a class="reference external" href="https://launchpad.net/cbcpdesys">https://launchpad.net/cbcpdesys</a>).</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

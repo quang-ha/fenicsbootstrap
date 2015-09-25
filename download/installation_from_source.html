@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Manual installation from source &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="FEniCS versions and release notes" href="index.html" />
+    <link rel="next" title="Binary installation using conda" href="installation_using_conda.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="icons.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="manual-installation-from-source">
+<span id="installation-from-source"></span><h1>Manual installation from source<a class="headerlink" href="#manual-installation-from-source" title="Permalink to this headline">¶</a></h1>
+<p>You can also build and install FEniCS components manually from the source code.
+You will need to install the Python packages
+<a class="reference external" href="https://bitbucket.org/fenics-project/ffc">FFC</a>,
+<a class="reference external" href="https://bitbucket.org/fenics-project/fiat">FIAT</a>,
+<a class="reference external" href="https://bitbucket.org/fenics-project/instant">Instant</a>,
+<a class="reference external" href="https://bitbucket.org/fenics-project/ufl">UFL</a>.
+You will also need to install the C++/Python package
+<a class="reference external" href="https://bitbucket.org/fenics-project/dolfin">DOLFIN</a>.
+Instructions for how to install these packages are given below.</p>
+<div class="section" id="python-packages-ffc-fiat-instant-and-ufl">
+<h2>Python packages (FFC, FIAT, Instant and UFL)<a class="headerlink" href="#python-packages-ffc-fiat-instant-and-ufl" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">First, download the source code for <a class="reference external" href="https://bitbucket.org/fenics-project/ffc">FFC</a>, <a class="reference external" href="https://bitbucket.org/fenics-project/fiat">FIAT</a>, <a class="reference external" href="https://bitbucket.org/fenics-project/instant">Instant</a> and <a class="reference external" href="https://bitbucket.org/fenics-project/ufl">UFL</a>. Then for each of these
+packages, follow the instructions below.</p>
+</li>
+<li><p class="first">Uncompress the archive to a convenient location.</p>
+</li>
+<li><p class="first">Navigate to this folder and run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo python setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This will install the packages system wide on your computer. You may
+easily change the installation directory. For example, if you do not
+have super-user access, you may wish to install the packages in a
+directory named <tt class="docutils literal"><span class="pre">local</span></tt> in your home directory. This may be
+accomplished by running the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install --prefix=~/local
+</pre></div>
+</div>
+</div>
+<div class="section" id="c-python-package-dolfin">
+<h2>C++/Python package (DOLFIN)<a class="headerlink" href="#c-python-package-dolfin" title="Permalink to this headline">¶</a></h2>
+<p>Building and installing DOLFIN require CMake version &gt;= 2.8.</p>
+<ol class="arabic">
+<li><p class="first">First, download the source code for <a class="reference external" href="https://bitbucket.org/fenics-project/dolfin">DOLFIN</a>.</p>
+</li>
+<li><p class="first">Uncompress the archive to a convenient location.</p>
+</li>
+<li><p class="first">Navigate to this folder and run the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>cmake .
+make
+sudo make install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This will install the packages system wide on your computer. You may easily
+change the installation directory. For example, you may wish to install
+the packages in a directory named <tt class="docutils literal"><span class="pre">local</span></tt> in your home directory. This
+may be accomplished by replacing the first of the above commands by:</p>
+<div class="highlight-python"><div class="highlight"><pre>cmake -DCMAKE_INSTALL_PREFIX=~/local .
+</pre></div>
+</div>
+<p>It is also possible (and usually recommended) to build DOLFIN &#8216;out of
+source&#8217;.  In the directory where you wish to build DOLFIN, the build can
+be configured by:</p>
+<div class="highlight-python"><div class="highlight"><pre>cmake -DCMAKE_INSTALL_PREFIX=&lt;prefix&gt; &lt;source_path&gt;
+</pre></div>
+</div>
+<p>where &lt;source_path&gt; is the path to the DOLFIN source.
+You may also want to consider using a graphical front end for CMake such
+as either <tt class="docutils literal"><span class="pre">cmake-gui</span></tt> or <tt class="docutils literal"><span class="pre">ccmake</span></tt>. These both provide a simple way to
+configure the installation.</p>
+<p>During the configuration phase of DOLFIN (calling <tt class="docutils literal"><span class="pre">cmake</span></tt>, <tt class="docutils literal"><span class="pre">cmake-gui</span></tt>, or
+<tt class="docutils literal"><span class="pre">ccmake</span></tt>), you will be notified of any missing dependencies. If a required
+package is missing, you will need to install that package and configure DOLFIN
+again. If an optional package is missing, you may choose to continue with the
+installation but some functionality may be missing. The build system will list
+both found and missing optional dependencies at the end of the configuration
+process.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Automated adaptivity and error control in FEniCS &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Featured articles of the FEniCS project" href="../index.html" />
+    <link rel="next" title="FEniCS‘11 at Texas Tech" href="fenics_11_texas_tech.html" />
+    <link rel="prev" title="FEniCS days at Imperial College: June 18 and 29 2012" href="../2012/fenics_days_at_imperial.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="automated-adaptivity-and-error-control-in-fenics">
+<h1>Automated adaptivity and error control in FEniCS<a class="headerlink" href="#automated-adaptivity-and-error-control-in-fenics" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Featured article 2011-08-29</div>
+<div class="line"><em>Created by Marie E. Rognes, simulations by Anders E. Johansen</em></div>
+</div>
+<p>Adaptivity and error control go hand in hand for numerical simulations
+of differential equations. Controlling the error of a numerical
+approximation is a prerequisite for more reliable simulations, while
+adapting the discretization to local features of the problem can lead
+to more efficient simulations. Goal-oriented adaptivity and error
+control allow a further enhancement: numerical simulations targeted at
+a specific <strong>quantity of interest</strong>.</p>
+<img alt="../../_images/atria_whole.png" src="../../_images/atria_whole.png" />
+<img alt="../../_images/atria_zoom.gif" src="../../_images/atria_zoom.gif" />
+<p>Here you see an example: automated adaptive refinement steered towards
+the computation of the wall stresses at a part of the human atria
+modelled by an anisotropic, hyperelastic body <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</p>
+<div class="section" id="we-have-automated-it-for-you">
+<h2>We have automated it for you!<a class="headerlink" href="#we-have-automated-it-for-you" title="Permalink to this headline">¶</a></h2>
+<p>The FEniCS components support automated goal-oriented error control
+for stationary variational problems. What does this mean? This means
+that any variational problem that can be solved with a variational
+solver can <strong>just as easily</strong> be solved with an adaptive variational
+solver. The adaptive variational solver simply takes a tolerance and
+the quantity of interest as additional input. So, in the most basic
+case, instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">solve</span><span class="p">(</span><span class="n">F</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>one can write</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">solve</span><span class="p">(</span><span class="n">F</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">tol</span><span class="o">=...</span><span class="p">,</span> <span class="n">M</span><span class="o">=...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You might wonder how it works? Well, in short, the adaptive
+variational solver carries out a loop over meshes; starting with an
+initial mesh, it estimates the error and where to best refine,
+refines, and continues until the error tolerance is reached. The error
+estimates and refinement indicators are based on automatically
+generated <strong>dual-weighted-residual</strong> based estimates. In particular,
+these estimates and indicators are generated (on the fly) for each
+given variational problem and goal-functional, and therefore directly
+tuned to the problem at hand. For more information, see <a class="footnote-reference" href="#id5" id="id2">[2]</a>.</p>
+</div>
+<div class="section" id="how-to-use-it">
+<h2>How to use it<a class="headerlink" href="#how-to-use-it" title="Permalink to this headline">¶</a></h2>
+<img alt="../../_images/navier_stokes_solution.png" class="align-center" src="../../_images/navier_stokes_solution.png" />
+<p>Below is a simple code example for the automated adaptive variational
+solvers using the DOLFIN Python interface. The variational problem at
+hand is the stationary Navier&#8211;Stokes equations over a mesh of an
+aneurysm <a class="footnote-reference" href="#id6" id="id3">[3]</a>, subjected to a prescribed pressure at one of the inlet
+vessels. The goal functional (or target quantity of interest) is the
+outflux of one of the other vessels.</p>
+<p>More standalone examples (including C++ examples) can be found in the
+<a class="reference internal" href="../../documentation/index.html#documentation"><em>DOLFIN demo directories</em></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># Load mesh and boundary indicators from file</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s">&quot;aneurysm.xml&quot;</span><span class="p">)</span>
+<span class="n">bc_markers</span> <span class="o">=</span> <span class="n">MeshFunction</span><span class="p">(</span><span class="s">&quot;uint&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="s">&quot;markers.xml&quot;</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">Measure</span><span class="p">(</span><span class="s">&quot;ds&quot;</span><span class="p">)[</span><span class="n">bc_markers</span><span class="p">]</span>
+
+<span class="c"># Define function spaces</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">VectorFunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s">&quot;CG&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s">&quot;CG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">V</span><span class="o">*</span><span class="n">Q</span>
+
+<span class="c"># Create functions</span>
+<span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span> <span class="o">=</span> <span class="n">TestFunctions</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+<span class="c"># Define variational form</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">FacetNormal</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="o">*</span><span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">+</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+     <span class="o">-</span> <span class="n">div</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="n">q</span><span class="o">*</span><span class="n">div</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">dot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># No-slip boundary condition for the velocity</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">Constant</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span> <span class="n">bc_markers</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c"># Define goal functional</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># Solve adaptively</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">F</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="developers-tip">
+<h3>Developers&#8217; tip:<a class="headerlink" href="#developers-tip" title="Permalink to this headline">¶</a></h3>
+<p>One final tip: in our experience, (goal-oriented) adaptivity based on
+mesh refinement is typically the most useful if the variational
+problem at hand has local features, such as sharp interfaces or
+singularities, or if the goal functional is localized to certain parts
+of the computational domain.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Mesh of the human atria constructed at Simula Research
+Laboratory from a segmentation provided by Institute of
+Biomedical Engineering at Karlsruhe Institute of Technology of
+the The Visible Man data set, made available by the National
+Institutes of Health.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Marie E. Rognes and Anders Logg: <a class="reference external" href="http://home.simula.no/~logg/pub/papers/RognesLogg2010a.pdf">Automated goal-oriented error
+control I: stationary variational problems</a>,
+submitted to journal, 2010.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Mesh of aneurysm constructed by Ida Norderhaug Drøsdal and
+Kent-Andre Mardal based on CT images provided by Søren Jakob
+Bakke at the National hospital of Norway.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

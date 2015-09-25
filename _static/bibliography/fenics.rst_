@@ -1,0 +1,194 @@
+.. Note! This file should not be edited manually. It should
+.. instead be generated from within source/_static/bibliography.
+
+Articles in International Journals
+==================================
+
+* **R. C. Kirby (2004)**.
+  *Algorithm 839: FIAT, a New Paradigm for Computing Finite Element Basis Functions*,
+  ACM Transactions on Mathematical Software,
+  30(4),
+  pp. 502-516,
+  [`doi:10.1145/1039813.1039820 <http://dx.doi.org/10.1145/1039813.1039820>`_].
+
+* **R. C. Kirby, M. G. Knepley, A. Logg and L. R. Scott (2005)**.
+  *Optimizing the Evaluation of Finite Element Matrices*,
+  SIAM Journal on Scientific Computing,
+  27(3),
+  pp. 741-758,
+  [`doi:10.1137/040607824 <http://dx.doi.org/10.1137/040607824>`_].
+
+* **R. C. Kirby and A. Logg (2006)**.
+  *A Compiler for Variational Forms*,
+  ACM Transactions on Mathematical Software,
+  32(3),
+  [`doi:10.1145/1163641.1163644 <http://dx.doi.org/10.1145/1163641.1163644>`_],
+  [`arXiv:1112.0402 <http://arxiv.org/abs/1112.0402>`_].
+
+* **R. C. Kirby, A. Logg, L. R. Scott and A. R. Terrel (2006)**.
+  *Topological Optimization of the Evaluation of Finite Element Matrices*,
+  SIAM Journal on Scientific Computing,
+  28(1),
+  pp. 224-240,
+  [`doi:10.1137/050635547 <http://dx.doi.org/10.1137/050635547>`_].
+
+* **R. C. Kirby and L. R. Scott (2007)**.
+  *Geometric Optimization of the Evaluation of Finite Element Matrices*,
+  SIAM Journal on Scientific Computing,
+  29(2),
+  pp. 827-841.
+
+* **R. C. Kirby and A. Logg (2007)**.
+  *Efficient Compilation of a Class of Variational Forms*,
+  ACM Transactions on Mathematical Software,
+  33(3),
+  [`doi:10.1145/1268769.1268771 <http://dx.doi.org/10.1145/1268769.1268771>`_].
+
+* **A. Logg (2007)**.
+  *Automating the Finite Element Method*,
+  Archives of Computational Methods in Engineering,
+  14(2),
+  pp. 93-138,
+  [`doi:10.1007/s11831-007-9003-9 <http://dx.doi.org/10.1007/s11831-007-9003-9>`_],
+  [`arXiv:1112.0433 <http://arxiv.org/abs/1112.0433>`_].
+
+* **K. B. Ølgaard, A. Logg and G. N. Wells (2008)**.
+  *Automated Code Generation for Discontinuous Galerkin Methods*,
+  SIAM Journal on Scientific Computing,
+  31(2),
+  pp. 849-864,
+  [`doi:10.1137/070710032 <http://dx.doi.org/10.1137/070710032>`_],
+  [`arXiv:1104.0628 <http://arxiv.org/abs/1104.0628>`_].
+
+* **R. C. Kirby and A. Logg (2008)**.
+  *Benchmarking Domain-Specific Compiler Optimizations for Variational Forms*,
+  ACM Transactions on Mathematical Software,
+  35(2),
+  pp. 1-18,
+  [`doi:10.1145/1377612.1377614 <http://dx.doi.org/10.1145/1377612.1377614>`_].
+
+* **A. Logg (2009)**.
+  *Efficient Representation of Computational Meshes*,
+  International Journal of Computational Science and Engineering,
+  4(4),
+  pp. 283-295,
+  [`doi:10.1504/IJCSE.2009.029164 <http://dx.doi.org/10.1504/IJCSE.2009.029164>`_].
+
+* **M. E. Rognes, R. C. Kirby and A. Logg (2009)**.
+  *Efficient Assembly of H(div) and H(curl) Conforming Finite Elements*,
+  SIAM Journal on Scientific Computing,
+  31(6),
+  pp. 4130-4151,
+  [`doi:10.1137/08073901X <http://dx.doi.org/10.1137/08073901X>`_].
+
+* **M. S. Alnæs, A. Logg, K.-A. Mardal, O. Skavhaug and H. P. Langtangen (2009)**.
+  *Unified Framework for Finite Element Assembly*,
+  International Journal of Computational Science and Engineering,
+  4(4),
+  pp. 231-244,
+  [`doi:10.1504/IJCSE.2009.029160 <http://dx.doi.org/10.1504/IJCSE.2009.029160>`_].
+
+* **M. S. Alnæs and K.-A. Mardal (2010)**.
+  *On the Efficiency of Symbolic Computations Combined With Code Generation for Finite Element Methods*,
+  ACM Transactions on Mathematical Software,
+  37(1),
+  [`doi:10.1145/1644001.1644007 <http://dx.doi.org/10.1145/1644001.1644007>`_].
+
+* **A. Logg and G. N. Wells (2010)**.
+  *DOLFIN: Automated Finite Element Computing*,
+  ACM Transactions on Mathematical Software,
+  37(2),
+  [`doi:10.1145/1731022.1731030 <http://dx.doi.org/10.1145/1731022.1731030>`_],
+  [`arXiv:1103.6248 <http://arxiv.org/abs/1103.6248>`_].
+
+* **K. B. Ølgaard and G. N. Wells (2010)**.
+  *Optimisations for Quadrature Representations of Finite Element Tensors Through Automated Code Generation*,
+  ACM Transactions on Mathematical Software,
+  37,
+  [`doi:10.1145/1644001.1644009 <http://dx.doi.org/10.1145/1644001.1644009>`_],
+  [`arXiv:1104.0199 <http://arxiv.org/abs/1104.0199>`_].
+
+* **J. Hoffman, J. Jansson, R. V. d. Abreu, C. Degirmenci, N. Jansson, K. Müller, M. Nazarov and J. H. Spühler (2012)**.
+  *Unicorn: Parallel Adaptive Finite Element Simulation of Turbulent Flow and Fluid-Structure Interaction for Deforming Domains and Complex Geometry*,
+  Computer and Fluids,
+  in press.
+
+* **N. Jansson, J. Jansson and J. Hoffman (2012)**.
+  *Framework for Massively Parallel Adaptive Finite Element Computational Fluid Dynamics on Tetrahedral Meshes*,
+  SIAM Journal on Scientific Computing,
+  34(1),
+  pp. C24-C41.
+
+* **M. E. Rognes, D. A. Ham, C. J. Cotter and A. T. T. McRae (2013)**.
+  *Automating the Solution of PDEs on the Sphere and Other Manifolds in FEniCS 1.2*,
+  Geoscientific Model Development,
+  6,
+  pp. 2099-2119,
+  [`doi:10.5194/gmd-6-2099-2013 <http://dx.doi.org/10.5194/gmd-6-2099-2013>`_].
+
+* **M. S. Alnæs, A. Logg, K. B. Ølgaard, M. E. Rognes and G. N. Wells (2014)**.
+  *Unified Form Language: a Domain-Specific Language for Weak Formulations of Partial Differential Equations*,
+  ACM Transactions on Mathematical Software,
+  40(2),
+  [`doi:10.1145/2566630 <http://dx.doi.org/10.1145/2566630>`_],
+  [`arXiv:1211.4047 <http://arxiv.org/abs/1211.4047>`_].
+
+Books
+=====
+
+* **A. Logg, K.-A. Mardal, G. N. Wells et al. (2012)**.
+  *Automated Solution of Differential Equations by the Finite Element Method*,
+  Springer,
+  [`doi:10.1007/978-3-642-23099-8 <http://dx.doi.org/10.1007/978-3-642-23099-8>`_].
+
+Chapters in Books
+=================
+
+* **A. Logg, G. N. Wells and J. Hake (2012)**.
+  *DOLFIN: a C++/Python Finite Element Library*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 10.
+
+* **A. Logg, K. B. Ølgaard, M. E. Rognes and G. N. Wells (2012)**.
+  *FFC: the FEniCS Form Compiler*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 11.
+
+* **R. C. Kirby (2012)**.
+  *FIAT: Numerical Construction of Finite Element Basis Functions,*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 13.
+
+* **M. S. Alnæs and K.-A. Mardal (2012)**.
+  *SyFi and SFC: Symbolic Finite Elements and Form Compilation*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 15.
+
+* **M. S. Alnæs, A. Logg and K.-A. Mardal (2012)**.
+  *UFC: a Finite Element Code Generation Interface*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 16.
+
+* **M. S. Alnæs (2012)**.
+  *UFL: a Finite Element Form Language*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 17.
+
+* **J. Hoffman, J. Jansson, C. Degirmenci, N. Jansson and M. Nazarov (2012)**.
+  *Unicorn: a Unified Continuum Mechanics Solver*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 18.
+
+* **J. Hoffman, J. Jansson, N. Jansson, C. Johnson and R. V. d. Abreu (2012)**.
+  *Turbulent Flow and Fluid–structure Interaction*,
+  Automated Solution of Differential Equations by the Finite Element Method, Volume 84 of Lecture Notes in Computational Science and Engineering,
+  Springer,
+  Chapter 28.
+

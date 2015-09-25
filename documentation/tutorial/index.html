@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FEniCS tutorial (Python) &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Documentation for FEniCS 1.6.0" href="../index.html" />
+    <link rel="next" title="Fundamentals" href="fundamentals.html" />
+    <link rel="prev" title="Documentation for FEniCS 1.6.0" href="../index.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="tutorial"></span><div class="section" id="fenics-tutorial-python">
+<h1>FEniCS tutorial (Python)<a class="headerlink" href="#fenics-tutorial-python" title="Permalink to this headline">¶</a></h1>
+<p><em>Written by Hans Petter Langtangen</em></p>
+<p>This document presents a FEniCS tutorial to get new users quickly up
+and running with solving differential equations. FEniCS can be
+programmed both in C++ and Python, but this tutorial focuses
+exclusively on Python programming, since this is the simplest approach
+to exploring FEniCS for beginners and since it actually gives high
+performance. After having digested the examples in this tutorial, the
+reader should be able to learn more from the <a class="reference internal" href="../index.html#documentation"><em>FEniCS
+documentation</em></a> and from the FEniCS book
+<a class="reference internal" href="../../book/index.html#book"><em>Automated Solution of Differential Equations by the Finite
+Element Method</em></a>.</p>
+<p>The reader is encouraged to contact the author at <tt class="docutils literal"><span class="pre">hpl&#64;simula.no</span></tt>
+regarding typos, errors, and suggestions for improvements.</p>
+<p><a class="reference external" href="/_static/tutorial/fenics_tutorial_1.0.pdf">A LaTeX/PDF version</a> is
+also available, in addition to a <a class="reference external" href="/_static/tutorial/fenics_tutorial_examples.tar.gz">tarball with all programs referred
+to</a> in this
+tutorial (pack out with the Unix command <tt class="docutils literal"><span class="pre">tar</span> <span class="pre">xvzf</span>
+<span class="pre">fenics_tutorial_examples.tar.gz</span></tt>).</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#the-poisson-equation">The Poisson equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#variational-formulation">Variational Formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#implementation-1">Implementation (1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#controlling-the-solution-process">Controlling the Solution Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#linear-variational-problem-and-solver-objects">Linear Variational Problem and Solver Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#examining-the-discrete-solution">Examining the Discrete Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#solving-a-real-physical-problem">Solving a Real Physical Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#quick-visualization-with-vtk">Quick Visualization with VTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#computing-derivatives">Computing Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#a-variable-coefficient-poisson-problem">A Variable-Coefficient Poisson Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#computing-functionals">Computing Functionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#visualization-of-structured-mesh-data">Visualization of Structured Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#combining-dirichlet-and-neumann-conditions">Combining Dirichlet and Neumann Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#multiple-dirichlet-conditions">Multiple Dirichlet Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#a-linear-algebra-formulation">A Linear Algebra Formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals.html#parameterizing-the-number-of-space-dimensions">Parameterizing the Number of Space Dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear.html">Nonlinear Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear.html#picard-iteration">Picard Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear.html#a-newton-method-at-the-algebraic-level">A Newton Method at the Algebraic Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear.html#a-newton-method-at-the-pde-level">A Newton Method at the PDE Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nonlinear.html#solving-the-nonlinear-variational-problem-directly">Solving the Nonlinear Variational Problem Directly</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timedep.html">Time-Dependent Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timedep.html#a-diffusion-problem-and-its-discretization">A Diffusion Problem and Its Discretization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedep.html#implementation-2">Implementation (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedep.html#avoiding-assembly">Avoiding Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedep.html#a-physical-example">A Physical Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="prepro.html">Creating More Complex Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prepro.html#built-in-mesh-generation-tools">Built-In Mesh Generation Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepro.html#transforming-mesh-coordinates">Transforming Mesh Coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Handling Domains with Different Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="materials.html#working-with-two-subdomains">Working with Two Subdomains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html#implementation-3">Implementation (3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html#multiple-neumann-robin-and-dirichlet-condition">Multiple Neumann, Robin, and Dirichlet Condition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more.html">More Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous Topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#glossary">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#overview-of-objects-and-functions">Overview of Objects and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#user-defined-functions">User-Defined Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#linear-solvers-and-preconditioners">Linear Solvers and Preconditioners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#using-a-backend-specific-solver">Using a Backend-Specific Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#installing-fenics">Installing FEniCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#troubleshooting-compilation-problems">Troubleshooting: Compilation Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#problems-with-the-instant-cache">Problems with the Instant Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#syntax-errors-in-expressions">Syntax Errors in Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#problems-in-the-solve-step">Problems in the Solve Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#all-programs-fail-to-compile">All Programs Fail to Compile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#books-on-the-finite-element-method">Books on the Finite Element Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#books-on-python">Books on Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bib.html">Bibliography</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

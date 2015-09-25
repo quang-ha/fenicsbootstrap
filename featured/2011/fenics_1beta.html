@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FEniCS 1.0-beta &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Featured articles of the FEniCS project" href="../index.html" />
+    <link rel="next" title="Specifying large systems of PDEs with ease" href="pdesys.html" />
+    <link rel="prev" title="FEniCS‘11 at Texas Tech" href="fenics_11_texas_tech.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fenics-1-0-beta">
+<span id="featured-1-0-beta"></span><h1>FEniCS 1.0-beta<a class="headerlink" href="#fenics-1-0-beta" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Featured article 2011-08-17</div>
+<div class="line"><em>Created by Anders Logg</em></div>
+</div>
+<div class="section" id="long-in-the-making">
+<h2>Long in the making<a class="headerlink" href="#long-in-the-making" title="Permalink to this headline">¶</a></h2>
+<p>After 9 years of intense development, we are (almost!) ready to make
+our first official release: <strong>FEniCS 1.0</strong>. This is marked by the
+recent release of FEniCS 1.0-beta. FEniCS 1.0-beta is the result of a
+<a class="reference internal" href="../../citing/index.html#citing"><em>joint research project</em></a> for the development of
+innovative concepts and tools for automated scientific computing.</p>
+<img alt="../../_images/dolfin_trunk.png" class="align-center" src="../../_images/dolfin_trunk.png" />
+</div>
+<div class="section" id="an-evolving-interface">
+<h2>An evolving interface<a class="headerlink" href="#an-evolving-interface" title="Permalink to this headline">¶</a></h2>
+<p>Over the years, our focus been as much on the development of efficient
+implementations (backends) as on the design of an intuitive and
+<strong>automated problem solving environment</strong> for the solution of partial
+differential equations. As a result, the FEniCS user interface has
+evolved over the years, which has led to some frustration among users
+when applications need to be rewritten to match an evolving
+interface. But more importantly, the result is a now matured and
+<strong>polished user interface</strong> that we believe provides a much improved
+experience for FEniCS users. We feel confident that the interface has
+converged and we are ready to release FEniCS 1.0. This does not mean
+that the interface will remain constant forever, but we will think
+twice before making any disruptive changes to the interface!</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Define variational problem</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">f</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span>
+
+<span class="c"># Compute solution</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">L</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extensive-documentation">
+<h2>Extensive documentation<a class="headerlink" href="#extensive-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Over the last couple of years, we have also worked hard to add an
+important missing piece to the FEniCS Project: <strong>good documentation</strong>.
+We can now provide an <a class="reference internal" href="../../documentation/tutorial/index.html#tutorial"><em>extensive tutorial</em></a>, detailed
+<a class="reference internal" href="../../documentation/index.html#documentation"><em>API documentation</em></a> and a range of
+<a class="reference internal" href="../../documentation/index.html#documentation"><em>documented demos</em></a>. In addition, we have recently
+completed the work on a <a class="reference internal" href="../../book/index.html#book"><em>700-page book</em></a> that documents the
+methodology behind the FEniCS Project and highlights a number of
+applications in computational science based on FEniCS.</p>
+<img alt="../../_images/documentation1.png" class="align-center" src="../../_images/documentation1.png" />
+</div>
+<div class="section" id="ease-of-installation">
+<h2>Ease of installation<a class="headerlink" href="#ease-of-installation" title="Permalink to this headline">¶</a></h2>
+<p>Installation of our software remained a challenge for many years, in
+part due to the large number of third-party libraries that the FEniCS
+software depends on. We therefore made ease of installation a high
+priority and we can now offer <em class="xref std std-ref">prebuilt binaries</em> for <strong>GNU/Linux</strong> (Debian and Ubuntu), <strong>Mac OS X</strong>
+and <strong>Windows</strong>, as well as an <a class="reference internal" href="../../download/installation_using_dorsal.html#installation-using-dorsal"><em>automated installation script</em></a> for other platforms.</p>
+<img alt="../../_images/platforms1.png" class="align-center" src="../../_images/platforms1.png" />
+</div>
+<div class="section" id="going-forward">
+<h2>Going forward<a class="headerlink" href="#going-forward" title="Permalink to this headline">¶</a></h2>
+<p>After the release of 1.0-beta, users can expect a release of
+<strong>1.0-rc1</strong> and, perhaps, <strong>1.0-rc2</strong>, before the <strong>release of
+1.0</strong>. An exact release date cannot be promised as it depends on how
+long it takes for us to fix remaining bugs. Remember that we are all
+scientists who work on FEniCS in between writing papers and referee
+reports, teaching courses and supervising students.
+Follow <a class="reference external" href="https://launchpad.net/dolfin/trunk">the road</a> towards 1.0.</p>
+<p>After the release of 1.0, we look forward to adding <strong>new and exciting
+features</strong> to FEniCS. Items of current interest include improved (and
+optimized) support for parallel computing, improved adaptive mesh
+refinement (and coarsening), improved support for computing on
+non-matching overlapping meshes, and automated discretization of ODEs and
+time-dependent PDEs.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

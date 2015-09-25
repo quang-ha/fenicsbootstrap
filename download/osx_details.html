@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation instructions for Mac OS X &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="FEniCS versions and release notes" href="index.html" />
+    <link rel="next" title="Nightly snapshot releases" href="snapshot_releases.html" />
+    <link rel="prev" title="Older releases" href="older_releases.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-instructions-for-mac-os-x">
+<span id="osx-details"></span><h1>Installation instructions for Mac OS X<a class="headerlink" href="#installation-instructions-for-mac-os-x" title="Permalink to this headline">¶</a></h1>
+<p>This release includes DOLFIN 1.6.0, FFC 1.6.0, FIAT 1.6.0, Instant 1.6.0,
+mshr 1.6.0, UFL 1.6.0 and uflacs 1.6.0.</p>
+<table border="1" class="center docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="mac-icon" class="align-middle" src="../_images/mac.png" /> FEniCS 1.6.0 (Mac OS X 10.10 binary)</td>
+<td><a class="reference external" href="http://www.fenicsproject.org/pub/software/fenics/fenics-1.6.0-osx10.10.dmg">fenics-1.6.0-osx10.10.dmg</a>
+(<a class="reference external" href="http://www.fenicsproject.org/pub/software/fenics/fenics-1.6.0-osx10.10.dmg.md5">md5</a>,
+<a class="reference external" href="http://www.fenicsproject.org/pub/software/fenics/fenics-1.6.0-osx10.10.dmg.asc">sig</a>)</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Mac OS X 10.10 Yosemite.</li>
+<li>An up-to-date version of the Xcode Command Line Developer Tools. To
+install, simply run <tt class="docutils literal"><span class="pre">xcode-select</span> <span class="pre">--install</span></tt> in a terminal and click
+on the Install button.</li>
+<li>The FEniCS binary is built against system Python and will <em>not work</em>
+with Python from <a class="reference external" href="http://python.org">python.org</a>, Python from
+MacPorts, Homebrew or similar.</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The installation should be as simple as dragging the FEniCS icon into
+the Applications folder. When the installation is complete, there are
+two ways to use this binary:</p>
+<ul>
+<li><p class="first">Click on the FEniCS icon in the Applications folder. This will bring
+up a terminal with everything set up to work with FEniCS.</p>
+</li>
+<li><p class="first">Add the following line to the <tt class="docutils literal"><span class="pre">.profile</span></tt> file in your home
+directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">source</span> <span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">FEniCS</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Resources</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fenics</span><span class="o">/</span><span class="n">fenics</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>This will make FEniCS available whenever you start a new terminal.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="older-releases">
+<h2>Older releases<a class="headerlink" href="#older-releases" title="Permalink to this headline">¶</a></h2>
+<p>Older versions of the Mac OS X binary are also <a class="reference internal" href="older_releases.html#older-releases"><em>available</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

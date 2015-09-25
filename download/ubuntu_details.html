@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation instructions for Ubuntu &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="FEniCS versions and release notes" href="index.html" />
+    <link rel="next" title="Installation instructions for Windows" href="windows_details.html" />
+    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-instructions-for-ubuntu">
+<span id="ubuntu-details"></span><h1>Installation instructions for Ubuntu<a class="headerlink" href="#installation-instructions-for-ubuntu" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/debian.png" class="align-left" src="../_images/debian.png" />
+<p><a class="reference external" href="apt://fenics">Install FEniCS</a></p>
+<p>FEniCS is included as part of Ubuntu GNU/Linux. To install, simply click
+on the link above or run the following command in a terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install fenics
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Since Ubuntu has a policy of not updating the version of a shipped
+application, the FEniCS version available in the standard Ubuntu
+archive might be out-of-date. To keep up with the latest FEniCS
+releases, add the Ubuntu PPA as described below.</p>
+</div>
+<div class="section" id="ubuntu-ppa">
+<span id="id1"></span><h2>Ubuntu PPA<a class="headerlink" href="#ubuntu-ppa" title="Permalink to this headline">¶</a></h2>
+<p>To make sure you always have the latest FEniCS release, add the <a class="reference external" href="https://launchpad.net/~fenics-packages/+archive/fenics">FEniCS
+Personal Package Archive</a> (PPA) to
+your Ubuntu system. You can do this by running the following commands in
+a terminal:</p>
+<div class="highlight-sh"><div class="highlight"><pre>sudo add-apt-repository ppa:fenics-packages/fenics
+sudo apt-get update
+sudo apt-get install fenics
+sudo apt-get dist-upgrade
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The PPA will be deactivated if you later upgrade to a newer Ubuntu
+release, so you should run these commands again after a release
+upgrade.</p>
+</div>
+<div class="section" id="removing-the-ppa">
+<h3>Removing the PPA<a class="headerlink" href="#removing-the-ppa" title="Permalink to this headline">¶</a></h3>
+<p>If you want to remove the FEniCS PPA and restore everything back to the
+default packages from the standard Ubuntu archive, run the following
+command in a terminal:</p>
+<div class="highlight-sh"><div class="highlight"><pre>sudo ppa-purge ppa:fenics-packages/fenics
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="older-releases">
+<h1>Older releases<a class="headerlink" href="#older-releases" title="Permalink to this headline">¶</a></h1>
+<p>Older versions of the Ubuntu packages are also <a class="reference internal" href="older_releases.html#older-releases"><em>available</em></a>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

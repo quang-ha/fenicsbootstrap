@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Solving PDEs over manifolds in FEniCS &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Featured articles of the FEniCS project" href="../index.html" />
+    <link rel="next" title="Dolfin-adjoint wins the 2015 Wilkinson Prize for Numerical Software" href="wilkinson_prize.html" />
+    <link rel="prev" title="Subject-specific simulations of cerebrospinal fluid flow and drug delivery" href="csf-lpt.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="solving-pdes-over-manifolds-in-fenics">
+<h1>Solving PDEs over manifolds in FEniCS<a class="headerlink" href="#solving-pdes-over-manifolds-in-fenics" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Featured article 2015-06-10</div>
+<div class="line"><em>Created by Marie E. Rognes</em></div>
+</div>
+<p>Since FEniCS version 1.2, the FEniCS Project provides user-friendly
+and efficient support for solving differential equations over domains
+of differing topological and geometric dimension. For instance, you
+can specify and solve an equation defined over the surface of a ball
+(imagine the surface of the earth). This surface is a domain of
+topological dimension 2, but embedded in three spatial dimensions and
+thus of geometric dimension 3. In general, FEniCS supports simplicial
+meshes of geometric dimension <span class="math">\(n = 1, 2, 3\)</span> and topological
+dimension <span class="math">\(m \leq n\)</span>.</p>
+<p>Partial differential equations posed over such meshes, so-called
+immersed manifolds, are of particular importance in studying
+geophysical flows; for instance, ocean and atmosphere simulations
+crucially rely on the capability to solve equations over the
+sphere. Similarly, a number of geological applications involve flow
+equations defined over networks of fractures (intersecting
+two-dimensional planes embedded in three dimensions). Physiological
+simulation scenarios may involve networks of for instance blood
+vessels (networks of lines or curves embedded in three dimensions).</p>
+<div class="section" id="how-to-use-it">
+<h2>How to use it<a class="headerlink" href="#how-to-use-it" title="Permalink to this headline">¶</a></h2>
+<p>Given such a mesh, finite element spaces (including all our favorite
+families of finite elements), measures and variational forms may be
+defined as usual. For instance, here is a code snippet that solves an
+elliptic equation over a mesh of a Gray&#8217;s Klein bottle, a
+non-orientable two-dimensional surface embedded in three dimensions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">fenics</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># Import the mesh</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s">&quot;klein.xml.gz&quot;</span><span class="p">)</span>
+
+<span class="c"># Define the function space of choice as usual</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s">&quot;CG&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="c"># Define the variational form as usual, but pay attention to the</span>
+<span class="c"># definition of derivatives and measures</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">(</span><span class="s">&quot;x[0]*x[1]*x[2]&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">0.03</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">f</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span>
+
+<span class="c"># Solve and plot as usual</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">L</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Gray&#39;s Klein bottle&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;u&quot;</span><span class="p">,</span> <span class="n">interactive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This runs seamlessly in serial or parallel using MPI, and the results
+are plotted below:</p>
+<a class="reference internal image-reference" href="../../_images/klein_bottle.png"><img alt="../../_images/klein_bottle.png" src="../../_images/klein_bottle.png" style="width: 360.0px; height: 240.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/klein_solution.png"><img alt="../../_images/klein_solution.png" src="../../_images/klein_solution.png" style="width: 360.0px; height: 240.0px;" /></a>
+<p>Left: A mesh of Gray&#8217;s Klein bottle, a non-orientable two-dimensional
+surface without boundary embedded in 3D [2, 3]. Right: The solution to
+the elliptic PDE example given above over this mesh.</p>
+</div>
+<div class="section" id="more-information">
+<h2>More information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<p>For more information, including the definitions of spatial derivatives
+and integration measures used, and lots of additional examples, see
+the accompanying paper [3].</p>
+</div>
+<div class="section" id="references-and-acknowledgments">
+<h2>References and acknowledgments<a class="headerlink" href="#references-and-acknowledgments" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="http://paulbourke.net/geometry/klein/">http://paulbourke.net/geometry/klein/</a></p>
+<p>[2] Mesh of Gray&#8217;s Klein bottle, courtesy of Patrick E. Farrell and
+Simon W. Funke.</p>
+<p>[3] Automating the solution of PDEs on the sphere and other manifolds
+in FEniCS 1.2; M.E. Rognes, D.A. Ham, C.J. Cotter, and A.T.T. McRae;
+Geosci. Model Dev., 6;
+2099-2119; 2013. <a class="reference external" href="http://www.geosci-model-dev.net/6/2099/2013/">http://www.geosci-model-dev.net/6/2099/2013/</a>
+(doi:10.5194/gmd-6-2099-2013)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

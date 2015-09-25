@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Release notes for FEniCS 1.1 (2013-01-07) &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Release notes for FEniCS" href="../index.html" />
+    <link rel="next" title="Release notes for FEniCS 1.2 (2013-03-24)" href="../1.2/index.html" />
+    <link rel="prev" title="Release notes for FEniCS 1.0 (2011-12-07)" href="../1.0/index.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="release-notes-for-fenics-1-1-2013-01-07">
+<span id="release-1-1"></span><h1>Release notes for FEniCS 1.1 (2013-01-07)<a class="headerlink" href="#release-notes-for-fenics-1-1-2013-01-07" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<p>The following new features have been introduced in the release
+of FEniCS 1.1.0:</p>
+<ul class="simple">
+<li>Much improved parallel scaling</li>
+<li>Improved performance of finite element assembly</li>
+<li>Improved performance of mesh topology computation</li>
+<li>Improved performance of mesh building in parallel</li>
+<li>Support for XDMF and HDF5</li>
+<li>Support for restricted function spaces</li>
+<li>Support for matrix-free linear systems</li>
+<li>Support for GPU-accelerated linear algebra</li>
+<li>Support for mesh generation from constructive solid geometry (CSG) descriptions</li>
+<li>Support for mesh generation from STL</li>
+<li>Support for singular problems with PETSc Krylov solvers</li>
+<li>Change default integer type to std::size_t to handle larger problems</li>
+<li>Make SCOTCH default graph partitioner</li>
+</ul>
+<p>For a full list of new features and bug fixes, read the
+<a class="reference external" href="https://launchpad.net/dolfin/1.1.x/1.1.0/">ChangeLog</a></p>
+</div>
+<div class="section" id="interface-changes">
+<h2>Interface changes<a class="headerlink" href="#interface-changes" title="Permalink to this headline">¶</a></h2>
+<p>We have tried to minimize the number of interface changes between
+FEniCS 1.0 and 1.1, but a few changes have been necessary. The key changes are</p>
+<ol class="arabic">
+<li><p class="first">Common mesh classes have been renamed:</p>
+<p>The old classes:</p>
+<ul class="simple">
+<li>Box, Interval, Rectangle, UnitCircle, UnitCube, UnitInterval,
+UnitSphere, UnitSquare, UnitTetrahedron, UnitTriangle</li>
+</ul>
+<p>have been renamed by adding the suffix &#8216;Mesh&#8217;. The new equivalent
+classes are</p>
+<ul class="simple">
+<li>BoxMesh, IntervalMesh, RectangleMesh, UnitCircleMesh,
+UnitCubeMesh, UnitIntervalMesh, UnitSphereMesh, UnitSquareMesh,
+UnitTetrahedronMesh, UnitTriangleMesh</li>
+</ul>
+<p>respectively.</p>
+<p>This change was necessary to differentiate between mesh classes and
+the new geometry classes that have been introduced for built-in
+mesh generation.</p>
+</li>
+<li><p class="first">dolfin::uint has been replaced by std::size_t.</p>
+<p>This change was necessary to support large problems with many
+degrees of freedom.</p>
+</li>
+<li><p class="first">The vector of a Function is now returned only as a
+boost::shared_ptr and not as a reference.</p>
+</li>
+<li><p class="first">The Adaptive*VariationalSolvers now take the goal functional as a
+constructor argument (rather than as an argument to solve).</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

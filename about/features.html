@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Features &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="About the FEniCS Project" href="index.html" />
+    <link rel="next" title="The team behind the FEniCS Project" href="team.html" />
+    <link rel="prev" title="Core components" href="components.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="features">
+<span id="id1"></span><h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<p>FEniCS comes packed with features for the computational scientist.
+Partial differential equations can be specified in near-<strong>mathematical
+notation</strong> (as finite element variational problems) and <strong>solved
+automatically</strong>. FEniCS also provides a large library of important
+tools for the numerial analyst who wishes to explore and develop new
+methods.</p>
+<div class="section" id="automated-solution-of-variational-problems">
+<h2>Automated solution of variational problems<a class="headerlink" href="#automated-solution-of-variational-problems" title="Permalink to this headline">¶</a></h2>
+<p>Finite element variational problems may be specified in
+near-mathematical notation <strong>directly as part of your program</strong>.
+For example, the variational problem for the Poisson equation,</p>
+<div class="math">
+\[\underbrace{\int_{\Omega} \nabla u \cdot \nabla v \, {\rm d} x}_{a(u, v)}
+=
+\underbrace{\int_{\Omega} f v \, {\rm d} x}_{L(v)}
+\quad \forall v \in V,\]</div>
+<p>can be directly translated to the following FEniCS program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">f</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span>
+</pre></div>
+</div>
+<p>Variational problems like the one above may be <strong>solved automatically</strong> in
+FEniCS by calling the <tt class="docutils literal"><span class="pre">solve()</span></tt> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">u</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">L</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Automated solution of variational problems is not limited to linear
+problems. FEniCS also supports <strong>general nonlinear variational problems</strong>:</p>
+<div class="math">
+\[F(u; v) = 0 \quad \forall v \in V.\]</div>
+<p>The solution is automatically computed by Newton&#8217;s method through
+<strong>automatic differentiation</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">solve</span><span class="p">(</span><span class="n">F</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="automated-error-control-and-adaptivity">
+<h2>Automated error control and adaptivity<a class="headerlink" href="#automated-error-control-and-adaptivity" title="Permalink to this headline">¶</a></h2>
+<p>Say you want to solve the above problem adaptively with <strong>automated
+control of the error</strong> in the computed solution... No problem, just
+specify a <em>goal functional</em> <span class="math">\(\mathcal{M} : V \rightarrow
+\mathbb{R}\)</span> (a global scalar functional of your computed solution) and
+a tolerance <span class="math">\(\epsilon &gt; 0\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">solve</span><span class="p">(</span><span class="n">F</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="an-extensive-library-of-finite-elements">
+<h2>An extensive library of finite elements<a class="headerlink" href="#an-extensive-library-of-finite-elements" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS provides an extensive library of finite elements. You will find
+the standard <strong>Lagrange</strong> elements, but also support for <strong>DG
+methods</strong>, vector elements like the <strong>BDM</strong>, <strong>RT</strong> and <strong>Nedelec</strong>
+elements, and special element types like the <strong>Crouzeix-Raviart</strong>
+element.</p>
+<img alt="../_images/elements.png" class="align-center" src="../_images/elements.png" />
+</div>
+<div class="section" id="high-performance-linear-algebra">
+<h2>High performance linear algebra<a class="headerlink" href="#high-performance-linear-algebra" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS provides unified access to <strong>a range of linear algebra libraries</strong>
+through a common wrapper layer. Currently supported linear algebra
+backends include <a class="reference external" href="http://www.mcs.anl.gov/petsc/">PETSc</a>,
+<a class="reference external" href="http://trilinos.sandia.gov/packages/epetra/">Trilinos/Epetra</a>,
+<a class="reference external" href="http://www.boost.org/doc/libs/release/libs/numeric/ublas/doc/index.htm">uBLAS</a>
+and <a class="reference external" href="http://www.simunova.com/de/node/24">MTL4</a>. The backend may be
+easily switched by changing the value of a parameter. <strong>Parallel
+computing</strong> is supported through the PETSc and Epetra backends.</p>
+</div>
+<div class="section" id="computational-meshes">
+<h2>Computational meshes<a class="headerlink" href="#computational-meshes" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS provides <strong>fully distributed</strong> simplex meshes in one
+(intervals), two (triangles) and three (tetrahedra) space dimensions.
+Mesh data may be easily accessed through <strong>mesh iterators</strong>. Meshes
+may be <strong>refined adaptively</strong>, and <strong>mesh partitioning</strong> for parallel
+computing is supported through interfaces to <a class="reference external" href="http://www.labri.fr/perso/pelegrin/scotch/">SCOTCH</a> and <a class="reference external" href="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">ParMETIS</a>.</p>
+<img alt="../_images/meshes.png" class="align-center" src="../_images/meshes.png" />
+</div>
+<div class="section" id="postprocessing">
+<h2>Postprocessing<a class="headerlink" href="#postprocessing" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS provides built-in plotting for quick and easy inspection of
+solutions and meshes. Just call the <tt class="docutils literal"><span class="pre">plot()</span></tt> command for <strong>live plotting</strong>
+of your data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can even plot derived quantities like the gradient of a function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>For more <strong>advanced postprocessing</strong>, FEniCS provides easy output in VTK
+format for visualization in <a class="reference external" href="http://www.paraview.org/">ParaView</a> or
+<a class="reference external" href="http://mayavi.sourceforge.net/">MayaVi</a>.</p>
+</div>
+<div class="section" id="language-bindings">
+<h2>Language bindings<a class="headerlink" href="#language-bindings" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS can be used from both <strong>Python</strong> and <strong>C++</strong>. The two interaces
+are very similar and provide the same features (with some small
+exceptions). Which interface to choose is a matter of taste, but the
+Python interface is easier to work with if you are not already a
+seasoned C++ programmer.</p>
+</div>
+<div class="section" id="extensive-documentation">
+<h2>Extensive documentation<a class="headerlink" href="#extensive-documentation" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS comes with <strong>extensive documentation</strong>, consisting of a
+<a class="reference internal" href="../documentation/tutorial/index.html#tutorial"><em>comprehensive tutorial</em></a>, detailed <a class="reference internal" href="../documentation/index.html#documentation"><em>API
+documentation</em></a> and a range of <a class="reference internal" href="../documentation/index.html#documentation"><em>documented demos</em></a>. In addition, the <a class="reference internal" href="../book/index.html#book"><em>700-page FEniCS book</em></a>
+documents the methodology behind the FEniCS Project and highlights a
+number of applications in computational science based on FEniCS.</p>
+<img alt="../_images/documentation.png" class="align-center" src="../_images/documentation.png" />
+</div>
+<div class="section" id="ease-of-installation">
+<h2>Ease of installation<a class="headerlink" href="#ease-of-installation" title="Permalink to this headline">¶</a></h2>
+<p>Ease of installation is a high priority for FEniCS.  We offer
+<em class="xref std std-ref">prebuilt binaries</em> for <strong>GNU/Linux</strong> (Debian
+and Ubuntu), <strong>Mac OS X</strong> and <strong>Windows</strong>, as well as an
+<a class="reference internal" href="../download/installation_using_dorsal.html#installation-using-dorsal"><em>automated installation script</em></a> for
+other platforms.</p>
+<img alt="../_images/platforms.png" class="align-center" src="../_images/platforms.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

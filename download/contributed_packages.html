@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contributed packages &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="FEniCS versions and release notes" href="index.html" />
+    <link rel="next" title="Data" href="data.html" />
+    <link rel="prev" title="FEniCS versions and release notes" href="index.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="contributed-packages">
+<span id="id1"></span><h1>Contributed packages<a class="headerlink" href="#contributed-packages" title="Permalink to this headline">¶</a></h1>
+<p>The packages listed on this page are user contributed packages and not
+provided by the FEniCS team. If you have problems with them, please
+contact the package maintainer first.</p>
+<p>If you have packages or information about other systems, it is always
+appreciated if you let us know. Please send the information to the
+<a class="reference external" href="mailto:fenics&#37;&#52;&#48;fenicsproject&#46;org">fenics mailing list</a>, or even better, send
+us a patch or make a <a class="reference external" href="https://bitbucket.org/fenics-project/fenics-web">pull request</a>.</p>
+<div class="section" id="arch-linux">
+<h2>Arch Linux<a class="headerlink" href="#arch-linux" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS is available in the <a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_User_Repository">Arch User Repository</a> (AUR),
+thanks to Myles English. The packages follow the trunk versions of the
+FEniCS projects.</p>
+<p>Start by running the following command to install the required packages
+from the official repository:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo pacman -S bzr cmake swig boost libxml2 lapack blas python2-numpy python2-scientificpython
+</pre></div>
+</div>
+<p>Then build and install all these packages from the AUR in the following
+order (along with any other dependencies they may need): <tt class="docutils literal"><span class="pre">parmetis</span></tt>,
+<tt class="docutils literal"><span class="pre">metis</span></tt>, <tt class="docutils literal"><span class="pre">petsc</span></tt>, <tt class="docutils literal"><span class="pre">slepc</span></tt>, <tt class="docutils literal"><span class="pre">trilinos</span></tt>, <tt class="docutils literal"><span class="pre">instant-bzr</span></tt>,
+<tt class="docutils literal"><span class="pre">fiat-bzr</span></tt>, <tt class="docutils literal"><span class="pre">ufl-bzr</span></tt>, <tt class="docutils literal"><span class="pre">ufc-bzr</span></tt>, <tt class="docutils literal"><span class="pre">ffc-bzr</span></tt>, <tt class="docutils literal"><span class="pre">viper-bzr</span></tt>,
+<tt class="docutils literal"><span class="pre">dolfin-bzr</span></tt>.</p>
+</div>
+<div class="section" id="opensuse">
+<h2>openSUSE<a class="headerlink" href="#opensuse" title="Permalink to this headline">¶</a></h2>
+<p>FEniCS is available in the <a class="reference external" href="http://download.opensuse.org/repositories/science/">openSUSE Science Repository</a>, thanks to
+Sebastien Corot.</p>
+<p>First we need to add the Science Repository if this has not been already
+added. Start by opening YaST2 and select <em>Software Repositories</em>. Then
+click on the button labeled <em>Add</em>. This brings up a screen labeled
+<em>Media Type</em>. From there select <tt class="docutils literal"><span class="pre">HTTP</span></tt> and click on <em>Next</em>. This brings
+up a screen labeled <em>Repository URL</em>. For the Science Repository, fill
+in:</p>
+<div class="highlight-python"><div class="highlight"><pre>Repository Name: openSUSE Science
+URL of the Repository: http://download.opensuse.org/repositories/science/openSUSE_12.3/
+</pre></div>
+</div>
+<p>Make sure to replace the version number with the correct version of
+openSUSE. Then click on <em>Next</em>. That should bring up a screen that is
+labeled <em>Adding New Repository</em>, and then return you to the list of
+configured repositories for your system. This list should now contain
+the openSUSE Science Repository.</p>
+<p>Now, to install DOLFIN, one goes into YaST2 and either searches for
+<tt class="docutils literal"><span class="pre">dolfin</span></tt> or selects <tt class="docutils literal"><span class="pre">Repositories</span></tt> and then selects <tt class="docutils literal"><span class="pre">dolfin</span></tt> from
+the list of available packages. YaST2 should also take care of selecting
+any dependencies.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

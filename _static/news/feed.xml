@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+
+<channel>
+	<title>FEniCS News</title>
+	<link>http://www.fenicsproject.org/</link>
+	<language>en</language>
+	<description>FEniCS News - http://www.fenicsproject.org/</description>
+
+<item>
+	<title>dorsal: Dorsal 1.0.0 Released!</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-22:/+announcement/9401</guid>
+	<link>https://launchpad.net/dorsal/+announcement/9401</link>
+	<description><p>We are pleased to announce the release of Dorsal 1.0.0, the first polished, tested release of the project corresponding to FEniCS 1.0.0!</p></description>
+	<pubDate>Thu, 22 Dec 2011 02:45:17 +0000</pubDate>
+</item>
+<item>
+	<title>viper: Viper 1.0.0</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-19:/+announcement/9393</guid>
+	<link>https://launchpad.net/fenics-viper/+announcement/9393</link>
+	<description><p>We are pleased to announce the release of Viper 1.0.0. This is the<br />
+first stable and supported release of Viper.</p></description>
+	<pubDate>Mon, 19 Dec 2011 15:54:49 +0000</pubDate>
+</item>
+<item>
+	<title>instant: Instant 1.0.0</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-19:/+announcement/9392</guid>
+	<link>https://launchpad.net/instant/+announcement/9392</link>
+	<description><p>We are pleased to announce the release of Instant 1.0.0. This is the<br />
+first stable and supported release of Instant.</p></description>
+	<pubDate>Mon, 19 Dec 2011 15:54:11 +0000</pubDate>
+</item>
+<item>
+	<title>ufl: UFL 1.0.0</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-19:/+announcement/9391</guid>
+	<link>https://launchpad.net/ufl/+announcement/9391</link>
+	<description><p>We are pleased to announce the release of UFL 1.0.0. This is the<br />
+first stable and supported release of UFL.</p></description>
+	<pubDate>Mon, 19 Dec 2011 15:53:31 +0000</pubDate>
+</item>
+<item>
+	<title>ufc: UFC 2.0.5</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-19:/+announcement/9390</guid>
+	<link>https://launchpad.net/ufc/+announcement/9390</link>
+	<description><p>We are pleased to announce the release of UFC 2.0.5 as part of the release of FEniCS 1.0.</p></description>
+	<pubDate>Mon, 19 Dec 2011 15:52:36 +0000</pubDate>
+</item>
+<item>
+	<title>dolfin: DOLFIN 1.0.0</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-19:/+announcement/9387</guid>
+	<link>https://launchpad.net/dolfin/+announcement/9387</link>
+	<description><p>We are pleased to announce the release of DOLFIN 1.0.0. This is the<br />
+first stable and supported release of DOLFIN.</p></description>
+	<pubDate>Mon, 19 Dec 2011 15:50:32 +0000</pubDate>
+</item>
+<item>
+	<title>ffc: FFC 1.0.0</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-12-19:/+announcement/9388</guid>
+	<link>https://launchpad.net/ffc/+announcement/9388</link>
+	<description><p>We are pleased to announce the release of FFC 1.0.0. This is the<br />
+first stable and supported release of FFC.</p></description>
+	<pubDate>Mon, 19 Dec 2011 15:50:08 +0000</pubDate>
+</item>
+<item>
+	<title>ffc: FFC 1.0-rc1</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-11-28:/+announcement/9287</guid>
+	<link>https://launchpad.net/ffc/+announcement/9287</link>
+	<description><p>A new version of FFC has been released. This is a bug fix release that fixes a small number of bugs in preparation for the  upcoming release of FFC 1.0.0.</p></description>
+	<pubDate>Mon, 28 Nov 2011 21:29:37 +0000</pubDate>
+</item>
+<item>
+	<title>dolfin: DOLFIN 1.0-rc2</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-11-28:/+announcement/9286</guid>
+	<link>https://launchpad.net/dolfin/+announcement/9286</link>
+	<description><p>A new version of DOLFIN has been released. This is a bug fix release that fixes a small number of bugs in preparation for the  upcoming release of DOLFIN 1.0.0.</p></description>
+	<pubDate>Mon, 28 Nov 2011 21:29:15 +0000</pubDate>
+</item>
+<item>
+	<title>ufc: UFC 2.0.4</title>
+	<guid isPermaLink="false">tag:launchpad.net,2011-11-28:/+announcement/9284</guid>
+	<link>https://launchpad.net/ufc/+announcement/9284</link>
+	<description><p>A new version of UFC has been released, fixing a bug in linking to boost_math_tr1.</p></description>
+	<pubDate>Mon, 28 Nov 2011 20:56:01 +0000</pubDate>
+</item>
+
+</channel>
+</rss>

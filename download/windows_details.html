@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation instructions for Windows &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="FEniCS versions and release notes" href="index.html" />
+    <link rel="next" title="Documentation for FEniCS 1.6.0" href="../documentation/index.html" />
+    <link rel="prev" title="Installation instructions for Ubuntu" href="ubuntu_details.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-instructions-for-windows">
+<span id="windows-details"></span><h1>Installation instructions for Windows<a class="headerlink" href="#installation-instructions-for-windows" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The FEniCS Windows binary is not up-to-date. To install the latest
+FEniCS release on Windows, we currently recommend to install <a class="reference external" href="http://www.ubuntu.com">Ubuntu</a> in a virtual machine (e.g. using
+<a class="reference external" href="http://www.virtualbox.org">VirtualBox</a>) and then install FEniCS
+from the <a class="reference internal" href="ubuntu_details.html#ubuntu-ppa"><em>Ubuntu PPA</em></a>.</p>
+</div>
+<p>The latest (and outdated) release for Windows includes DOLFIN 1.0.0, FFC 1.0.0, FIAT 1.0.0,
+Instant 1.0.0, UFC 2.0.5, UFL 1.0.0, and Viper 1.0.0.</p>
+<table border="1" class="center docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="windows-icon" class="align-middle" src="../_images/windows.png" /> FEniCS 1.0.0 (Windows installer)</td>
+<td><a class="reference external" href="http://www.fenicsproject.org/pub/software/fenics/fenics-1.0.0-mingw32.exe">fenics-1.0.0-mingw32.exe</a></td>
+</tr>
+<tr class="row-even"><td><img alt="archive-icon" class="align-middle" src="../_images/archive.png" /> FEniCS 1.0.0 (Sources for Windows)</td>
+<td><a class="reference external" href="http://www.fenicsproject.org/pub/software/fenics/fenics-source-1.0.0-win.zip">fenics-source-1.0.0-win.zip</a></td>
+</tr>
+</tbody>
+</table>
+<p>The Windows installer will install everything needed to run FEniCS on
+Windows, including MinGW compilers, Python, CMake, SWIG, and others. It
+does not currently include PETSc or Trilinos, which makes it unsuitable
+for solving any real problems. The installer has been verified to run on
+XP, Vista, and on Windows 7.</p>
+<p>Click the link above to download the Windows installer. The installation
+procedure is simple, just double-click on the file and follow the
+instructions. When the installation is complete, simply start the FEniCS
+command shell from the start menu and you are ready to start working.</p>
+<div class="section" id="older-releases">
+<h2>Older releases<a class="headerlink" href="#older-releases" title="Permalink to this headline">¶</a></h2>
+<p>Older versions of the Windows installer are also <a class="reference internal" href="older_releases.html#older-releases"><em>available</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

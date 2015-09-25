@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documenting the DOLFIN interface (Programmer’s reference) &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="FEniCS documentation coding style guide" href="styleguide_doc.html" />
+    <link rel="next" title="Documenting DOLFIN demos" href="documenting_dolfin_demos.html" />
+    <link rel="prev" title="FEniCS documentation coding style guide" href="styleguide_doc.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documenting-the-dolfin-interface-programmer-s-reference">
+<span id="styleguides-sphinx-documenting-interface"></span><h1>Documenting the DOLFIN interface (Programmer&#8217;s reference)<a class="headerlink" href="#documenting-the-dolfin-interface-programmer-s-reference" title="Permalink to this headline">¶</a></h1>
+<p>The DOLFIN <a class="reference internal" href="../documentation/index.html#documentation"><em>Programmer&#8217;s Reference</em></a> is generated
+for the DOLFIN C++ library and Python module from the source code
+using the documentation tool <a class="reference external" href="http://sphinx.pocoo.org/index.html">Sphinx</a>. This page describes how to
+generate the DOLFIN documentation locally and how to extend the
+contents of the Programmer&#8217;s Reference.</p>
+<div class="section" id="how-to-locally-build-the-dolfin-documentation">
+<span id="generate-dolfin-documentation-locally"></span><h2>How to locally build the DOLFIN documentation<a class="headerlink" href="#how-to-locally-build-the-dolfin-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The DOLFIN documentation can be generated and built from the DOLFIN
+source directly as follows:</p>
+<ul>
+<li><p class="first">Make sure that <a class="reference external" href="http://sphinx.pocoo.org/index.html">Sphinx</a> is
+installed.</p>
+</li>
+<li><p class="first">Build DOLFIN (for instructions, see <a class="reference internal" href="../download/installation_from_source.html#installation-from-source"><em>Manual installation from source</em></a>).</p>
+</li>
+<li><p class="first">Build the documentation by running:</p>
+<blockquote>
+<div><p>make doc</p>
+</div></blockquote>
+<p>in the DOLFIN build directory.</p>
+</li>
+</ul>
+<p>For <tt class="docutils literal"><span class="pre">make</span> <span class="pre">doc</span></tt> to successfully run, the DOLFIN Python module must be
+installed.</p>
+</div>
+<div class="section" id="how-to-improve-and-extend-the-dolfin-programmer-s-reference">
+<h2>How to improve and extend the DOLFIN Programmer&#8217;s reference<a class="headerlink" href="#how-to-improve-and-extend-the-dolfin-programmer-s-reference" title="Permalink to this headline">¶</a></h2>
+<p>The documentation contents are extracted from specially formatted
+comments (docstring comments) in the source code, converted to
+<a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>, and
+formatted using <a class="reference external" href="http://sphinx.pocoo.org/index.html">Sphinx</a>. The
+syntax used for these specially formatted comments is described below.</p>
+<p>To document a feature,</p>
+<ol class="arabic simple">
+<li>Add appropriate docstring comments to source files (see
+<a class="reference internal" href="#syntax-for-docstring-comments"><em>Syntax for docstring comments</em></a>).</li>
+<li>If you made changes to C++ header files or docstrings in
+<tt class="docutils literal"><span class="pre">dolfin_dir/dolfin/swig/*.i</span></tt> you should update the
+<tt class="docutils literal"><span class="pre">dolfin_dir/dolfin/swig/codeexamples.py</span></tt> file with an example
+snippet if applicable and run the script
+<tt class="docutils literal"><span class="pre">dolfin_dir/dolfin/swig/generate.py</span></tt> to update the
+<tt class="docutils literal"><span class="pre">dolfin_dir/dolfin/swig/docstrings.i</span></tt> file.</li>
+<li>Build the documentation as described in
+<a class="reference internal" href="#generate-dolfin-documentation-locally"><em>How to locally build the DOLFIN documentation</em></a> to check the result.</li>
+</ol>
+<div class="section" id="syntax-for-docstring-comments">
+<span id="id3"></span><h3>Syntax for docstring comments<a class="headerlink" href="#syntax-for-docstring-comments" title="Permalink to this headline">¶</a></h3>
+<p>As Sphinx does not allow sections in the markup for class/function
+documentation, we use <em>italics</em> (<tt class="docutils literal"><span class="pre">*italics*</span></tt>) and definition lists
+to group information.  This is to keep the markup as simple as
+possible since the reST source for the Python documentation of classes
+and functions will be used &#8216;as is&#8217; in the docstrings of the DOLFIN
+module.</p>
+<p>Most information can be put in the three sections:</p>
+<ul>
+<li><p class="first"><em>Arguments</em>, which are formatted using definition lists following this
+structure:</p>
+<div class="highlight-python"><div class="highlight"><pre>*Arguments*
+    &lt;name&gt; (&lt;type&gt;)
+        &lt;description&gt;
+    &lt;name2&gt; (&lt;type&gt;)
+        &lt;description&gt;
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="ge">*Arguments*</span>
+    dim (int)
+        some dimension.
+    d (double)
+        some value.
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Returns</em>, which is formatted in a similar fashion:</p>
+<div class="highlight-python"><div class="highlight"><pre>*Returns*
+    &lt;return type&gt;
+        &lt;description&gt;
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="ge">*Returns*</span>
+    int
+        Some random integer.
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Example</em>, a very small code snippet that shows how the
+class/function works. It does not necessarily have to be a
+stand-alone program.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="an-example-of-how-to-document-a-feature">
+<h3>An example of how to document a feature<a class="headerlink" href="#an-example-of-how-to-document-a-feature" title="Permalink to this headline">¶</a></h3>
+<p>To make matters more concrete let&#8217;s consider the case of writing
+documentation for the member function <tt class="docutils literal"><span class="pre">closest_cell</span></tt> of the DOLFIN
+<tt class="docutils literal"><span class="pre">Mesh</span></tt> class.  The Python interface to this class is generated by
+Swig and it is not extended in the Python layer.  Writing
+documentation for other classes and functions in DOLFIN which are not
+extended or added in the Python layer follow a similar procedure.</p>
+<p>The <tt class="docutils literal"><span class="pre">Mesh::closest_cell</span></tt> function is defined in the file
+<tt class="docutils literal"><span class="pre">dolfin_dir/dolfin/mesh/Mesh.h</span></tt>, and the comment lines and function
+definition look as follows:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// Computes the index of the cell in the mesh which is closest to the</span>
+<span class="c1">/// point query.</span>
+<span class="c1">///</span>
+<span class="c1">/// *Arguments*</span>
+<span class="c1">///     point (_Point_)</span>
+<span class="c1">///         A _Point_ object.</span>
+<span class="c1">///</span>
+<span class="c1">/// *Returns*</span>
+<span class="c1">///     uint</span>
+<span class="c1">///         The index of the cell in the mesh which is closest to point.</span>
+<span class="c1">///</span>
+<span class="c1">/// *Example*</span>
+<span class="c1">///     .. code-block:: c++</span>
+<span class="c1">///</span>
+<span class="c1">///         UnitSquare mesh(1, 1);</span>
+<span class="c1">///         Point point(0.0, 2.0);</span>
+<span class="c1">///         info(&quot;%d&quot;, mesh.closest_cell(point));</span>
+<span class="c1">///</span>
+<span class="c1">///     output::</span>
+<span class="c1">///</span>
+<span class="c1">///         1</span>
+<span class="n">dolfin</span><span class="o">::</span><span class="n">uint</span> <span class="n">closest_cell</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Note that the documentation of a function or class is placed above the
+definition in the source code.
+The structure and content follow the guidelines in the previous section.</p>
+<p>The Point object is a class like Mesh and it is defined in the FEniCS
+interface.  To insert a link to the documentation of this class use
+leading and trailing underscore i.e., <tt class="docutils literal"><span class="pre">_Point_</span></tt>.  When parsing the
+comment lines this string will be substituted with either
+<tt class="docutils literal"><span class="pre">:cpp:class:`Point`</span></tt> or <tt class="docutils literal"><span class="pre">:py:class:`Point`</span></tt> depending on whether
+documentation for the C++ or Python interface is being generated.  The
+return type, in this case <tt class="docutils literal"><span class="pre">dolfin::uint</span></tt>, will automatically be
+mapped to the correct Python type when generating the documentation
+for the Python interface. Note that if you are writing documentation
+for one of the functions/classes which are added to the Python layer
+manually you have to add manually the correct links and types.</p>
+<p>The example code uses C++ syntax because it is located in the C++
+header file.  Translating this code to a correct Python equivalent is
+rather difficult.  It is therefore necessary to add example code using
+the Python syntax manually.  This code should be put in the
+<tt class="docutils literal"><span class="pre">dolfin_dir/dolfin/swig/codeexamples.py</span></tt> which contains a simple
+dictionary of example code.  The dictionary containing only the
+example code for the example above should look as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">codesnippets</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">&quot;Mesh&quot;</span><span class="p">:{</span>
+<span class="s">&quot;dolfin::uint closest_cell(const Point&amp; point) const&quot;</span><span class="p">:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    &gt;&gt;&gt; mesh = dolfin.UnitSquare(1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; point = dolfin.Point(0.0, 2.0)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.closest_cell(point)</span>
+<span class="sd">    1</span>
+<span class="sd">&quot;&quot;&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The first dictionary contains dictionaries for all classes with code
+examples for each function. Note that the full C++ function signature
+has been used to identify the function to which the code example
+belongs.</p>
+<p>After adding the documentation to the <tt class="docutils literal"><span class="pre">Mesh.h</span></tt> file and Python code example
+to the <tt class="docutils literal"><span class="pre">codeexamples.py</span></tt> file, you have to run the script
+<tt class="docutils literal"><span class="pre">dolfin/dolfin/swig/generate.py</span></tt> to generate the
+<tt class="docutils literal"><span class="pre">dolfin/dolfin/swig/docstrings.i</span></tt> file and then build DOLFIN to update the
+docstrings in the <tt class="docutils literal"><span class="pre">dolfin</span></tt> Python module.</p>
+</div>
+<div class="section" id="why-is-the-documentation-procedure-so-elaborate">
+<h3>Why is the documentation procedure so elaborate?<a class="headerlink" href="#why-is-the-documentation-procedure-so-elaborate" title="Permalink to this headline">¶</a></h3>
+<p>The procedure for writing documentation might seem cumbersome so let&#8217;s have a
+look at the design considerations which have led to this ostensible case of
+overengineering.</p>
+<p>The Python interface is (partially) generated automatically using
+<a class="reference external" href="http://www.swig.org/">Swig</a> from the C++ implementation of DOLFIN.
+Some classes are extended when building (see the <tt class="docutils literal"><span class="pre">dolfin/dolfin/swig/*post.i</span></tt>
+files) while others are added or extended manually in the Python layer defined
+in <tt class="docutils literal"><span class="pre">dolfin/site-packages/dolfin</span></tt>.
+While this approach saves a lot of work when implementing the Python interface
+it puts some constraints on the way the documentation can be handled.
+In addition we have the following design goals for writing and maintaining the
+documentation:</p>
+<dl class="docutils">
+<dt>Avoid duplicate text</dt>
+<dd>In many cases the documentation of a feature will be virtually identical
+for the C++ and Python interfaces, and since the Python interface is
+generated from the C++ code, the documentation should be in the C++ source
+code.
+To avoid that the documentation on these pages and the comments in the
+source code (and the implementation itself) diverge, the documentation
+should be automatically generated from the C++ source code.
+Therefore the comments should be written using Sphinx markup.</dd>
+<dt>Help in the Python interpreter</dt>
+<dd>The documentation of a class/function when running <tt class="docutils literal"><span class="pre">help(dolfin.foo)</span></tt>
+in the Python interpreter should be identical to what can be found online.
+In practice this means that we have to generate the
+<tt class="docutils literal"><span class="pre">dolfin/dolfin/swig/docstrings.i</span></tt> file using the comments extracted from
+the C++ source before building the Python interface with Swig.</dd>
+<dt>Simple markup</dt>
+<dd>Since the documentation is written directly in the C++ source code, we want
+markup to be simple such that we have &#8216;code with comments&#8217; rather than
+&#8216;comments with code&#8217;.
+Another reason for preferring simple markup is that it is the raw docstring
+which will be available from the Python interpreter.</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

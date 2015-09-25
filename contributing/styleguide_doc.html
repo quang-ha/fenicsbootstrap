@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FEniCS documentation coding style guide &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="Contributing" href="index.html" />
+    <link rel="next" title="Documenting the DOLFIN interface (Programmer’s reference)" href="documenting_dolfin_api.html" />
+    <link rel="prev" title="FEniCS C++ coding style guide" href="styleguide_cpp.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fenics-documentation-coding-style-guide">
+<span id="styleguide-documentation"></span><h1>FEniCS documentation coding style guide<a class="headerlink" href="#fenics-documentation-coding-style-guide" title="Permalink to this headline">¶</a></h1>
+<p>This style guide contains general information on how to write
+documentation for FEniCS using the Sphinx documentation tool. This
+page mainly contains a section on frequently used reST and Sphinx
+markup for reference.</p>
+<p>See <a class="reference internal" href="documenting_dolfin_api.html#styleguides-sphinx-documenting-interface"><em>Documenting the DOLFIN interface (Programmer&#8217;s reference)</em></a>
+and <a class="reference internal" href="documenting_dolfin_demos.html#styleguides-sphinx-documenting-demos"><em>Documenting DOLFIN demos</em></a> for special instructions
+regarding the DOLFIN documentation.</p>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<p>The text width of normal text should not exceed 79 characters. This
+rule can be disregarded if readability demands it, for instance for
+code example tables.</p>
+</div>
+<div class="section" id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Permalink to this headline">¶</a></h2>
+<p>Section markers follow the convention from the <a class="reference external" href="http://docs.python.org/documenting/rest.html">Python Documentation</a>:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">#</span></tt> with overline, for parts</li>
+<li><tt class="docutils literal"><span class="pre">*</span></tt> with overline, for chapters</li>
+<li><tt class="docutils literal"><span class="pre">=</span></tt>, for sections</li>
+<li><tt class="docutils literal"><span class="pre">-</span></tt>, for subsections</li>
+<li><tt class="docutils literal"><span class="pre">^</span></tt>, for subsubsections</li>
+<li><tt class="docutils literal"><span class="pre">&quot;</span></tt>, for paragraphs</li>
+</ul>
+<p>Only the first word of section headings should be capitalised unless, of
+course, a word is a name which is normally capitalised. E.g., use</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="gh">FEniCS Python demos</span>
+<span class="gh">-------------------</span>
+</pre></div>
+</div>
+<p>instead of</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="gh">FEniCS Python Demos</span>
+<span class="gh">-------------------</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cross-referencing">
+<span id="styleguides-sphinx-cross-referencing"></span><h2>Cross referencing<a class="headerlink" href="#cross-referencing" title="Permalink to this headline">¶</a></h2>
+<p>Cross-references are created by placing labels at the location you
+want to refer to and then using <tt class="docutils literal"><span class="pre">:ref:`label-name`</span></tt> to create the
+link. Example:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="nt">_my-reference-label:</span>
+
+<span class="gh">Section to cross-reference</span>
+<span class="gh">--------------------------</span>
+
+This is the text of the section.
+
+It refers to the section itself, see <span class="na">:ref:</span><span class="nv">`my-reference-label`</span>.
+</pre></div>
+</div>
+<p>For this to work properly, the label names <strong>must</strong> be unique in the
+entire documentation source.</p>
+</div>
+<div class="section" id="frequently-used-markup-roles-and-directives">
+<h2>Frequently used markup (roles and directives)<a class="headerlink" href="#frequently-used-markup-roles-and-directives" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-snippets">
+<span id="styleguides-sphinx-code-snippets"></span><h3>Code snippets<a class="headerlink" href="#code-snippets" title="Permalink to this headline">¶</a></h3>
+<p>The FEniCS documentation makes heavy use of code snippets to
+illustrate how the interfaces work. Code snippets are created using
+the <tt class="docutils literal"><span class="pre">code-block</span></tt> directive (see <a class="reference external" href="http://sphinx.pocoo.org/markup/code.html">showing code examples</a> for more details). This
+makes it possible to show C++ and Python code snippets in the the
+following way:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">c++</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>which results in the output:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>respectively.</p>
+<p>In code-blocks as above, use spaces instead of tabs for
+indentation. For Python code examples, use 4 spaces per indentation
+level. For C++ code examples (DOLFIN), the 2 space indentation rule
+apply (cf. <a class="reference internal" href="styleguide_cpp.html#styleguides-cpp-coding-style-indentation"><em>C++ indentation</em></a>).</p>
+</div>
+<div class="section" id="math">
+<h3>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h3>
+<p>Writing FEniCS documentation often involves presenting mathematics,
+especially when documenting demos. We use the <tt class="docutils literal"><span class="pre">math</span></tt> role and
+directive to display inline math and equations respectively (see <a class="reference external" href="http://sphinx.pocoo.org/ext/math.html">math
+support in Sphinx</a> for more
+details).  The input markup for math is LaTeX, so the inline equation,
+<span class="math">\(f(x) = x^2\)</span>, is typeset by</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="na">:math:</span><span class="nv">`f(x) = x^2`</span>
+</pre></div>
+</div>
+<p>and the equation</p>
+<div class="math">
+\[a(u, v) = \int \nabla u \cdot \nabla v \; \rm{d}\Omega\]</div>
+<p>is typeset as</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+
+    a(u, v) = \int \nabla u \cdot \nabla v \; \rm{d}\Omega
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-files">
+<span id="styleguides-sphinx-download-files"></span><h3>Download files<a class="headerlink" href="#download-files" title="Permalink to this headline">¶</a></h3>
+<p>To make a file available for download, use the <tt class="docutils literal"><span class="pre">download</span></tt> role (see
+<a class="reference external" href="http://sphinx.pocoo.org/markup/inline.html">inline markup</a> for more
+details) in the following way:</p>
+<div class="highlight-rest"><div class="highlight"><pre>See the <span class="na">:download:</span><span class="nv">`main.cpp &lt;../../source/main.cpp&gt;`</span> file.
+</pre></div>
+</div>
+</div>
+<div class="section" id="author-comments">
+<h3>Author comments<a class="headerlink" href="#author-comments" title="Permalink to this headline">¶</a></h3>
+<p>Please refrain from using the keywords <em>note</em>, <em>todo</em> and <em>fixme</em> in
+comments such as</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="cp">.. note: Figure out how to present this in a better way</span>
+<span class="cp">.. todo: Add more text and equations</span>
+<span class="cp">.. fixme: The results look wrong, probably the boundary conditions</span>
+</pre></div>
+</div>
+<p>If you think a comment is required, use the <tt class="docutils literal"><span class="pre">note</span></tt> directive:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="ow">note</span><span class="p">::</span>
+
+    Figure out how to present this in a better way
+</pre></div>
+</div>
+<p>or the <tt class="docutils literal"><span class="pre">todo</span></tt> directive:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="ow">todo</span><span class="p">::</span>
+
+    Figure out how to present this in a better way
+</pre></div>
+</div>
+<p>and ask on the <a class="reference external" href="mailto:fenics&#37;&#52;&#48;fenicsproject&#46;org">fenics<span>&#64;</span>fenicsproject<span>&#46;</span>org</a> mailing list in order for the
+issue to be resolved as quickly as possible. This helps keeping the
+documentation in good shape.</p>
+</div>
+<div class="section" id="images">
+<span id="styleguides-sphinx-images"></span><h3>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
+<p>To include an image, simply use the <tt class="docutils literal"><span class="pre">image</span></tt> directive (see
+<a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#image">Image</a>
+for more details and options) in the following way:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="p">..</span> <span class="ow">image</span><span class="p">::</span> image.png
+    <span class="nc">:scale:</span> <span class="nf">75</span>
+    <span class="nc">:align:</span> <span class="nf">center</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

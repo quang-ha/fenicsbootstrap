@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Patient-specific simulations of cerebrospinal fluid flow &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../../index.html" />
+    <link rel="up" title="Featured articles of the FEniCS project" href="../index.html" />
+    <link rel="next" title="FEniCS‘12 at Simula Research Laboratory, June 5 – 7" href="fenics_12_simula.html" />
+    <link rel="prev" title="FEniCS‘13 at University of Cambridge, 18–19 March 2013" href="../2013/fenics_13_cambridge.html" />
+
+
+
+<link rel="shortcut icon" href="../../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="patient-specific-simulations-of-cerebrospinal-fluid-flow">
+<h1>Patient-specific simulations of cerebrospinal fluid flow<a class="headerlink" href="#patient-specific-simulations-of-cerebrospinal-fluid-flow" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Featured article 2012-05-10</div>
+<div class="line"><em>Created by G. Rutkowska, V. Haugthon, S. Linge and K.-A. Mardal</em></div>
+</div>
+<p>This article briefly describes the results of a FEniCS and VMTK based
+study of the flow of cerebrospinal fluid in the spinal canal in
+patients with the Chiari I malformation. The study is published in the
+prestigious journal AJNR, see <a class="reference external" href="http://www.ajnr.org/content/early/2012/04/19/ajnr.A3047.abstract?sid=302a30ad-18df-4c46-b52a-597166fb0263">[1]</a>.</p>
+<div class="section" id="chiari-i-malformation-and-syringomyelia">
+<h2>Chiari I malformation and syringomyelia<a class="headerlink" href="#chiari-i-malformation-and-syringomyelia" title="Permalink to this headline">¶</a></h2>
+<p>The Chiari I malformation (see Figure 1) is a malformation of the
+brain (or maybe skull), characterized by a downward displacement of
+the lower part of the brain that may even be outside the skull. Around
+1% of the population have this condition and the symptoms vary from
+occasional headache to chronic pain and paralysis. The reasons for the
+symptoms are believed to be associated with the flow of cerebrospinal
+fluid in and out of the head that occurs as the brain expands and
+shrinks to accommodate the blood pulsating in and out of the brain
+during a heart cycle.  The Chiari I malformation is often associated
+with syringomyelia (50%), a condition where cavities of fluid form and
+grow within the spinal cord, destroying the tissue of the spinal cord
+in the process. Recent findings demonstrate that CSF flow in Chiari
+patients is different from normals, see <a class="reference external" href="http://radiology.rsna.org/content/232/1/229.full">[2]</a>.</p>
+<img alt="../../_images/MRI.png" src="../../_images/MRI.png" />
+<p>Figure 1: The left image shows a sagital MR image of a healthy
+individual, while the right image shows a person with the Chiari I
+malformation (Cerebellum occupying the subarachnoid space close to
+C1/Foramen Magnum) and syringomyelia (white cysts within the spinal
+cord).</p>
+</div>
+<div class="section" id="vmtk-fenics">
+<h2>VMTK + FEniCS<a class="headerlink" href="#vmtk-fenics" title="Permalink to this headline">¶</a></h2>
+<p>In the current study, computational meshes from 12 individuals were
+created using <a class="reference external" href="http://www.vmtk.org">VMTK</a> , a toolkit for
+generating finite element meshes from medical images. VMTK has
+recently been extended with tools for marking boundary conditions and
+subdomains and exporting these to the DOLFIN mesh format directly. The
+CFD simulation tools are based on <a class="reference external" href="http://launchpad.net/nsbench">nsbench</a> described in Chapter 21 in the
+<a class="reference external" href="http://www.fenicsproject.org/book">FEniCS book</a>. See the <a class="reference external" href="http://www.duo.uio.no/sok/work.html?WORKID=132935">thesis</a> of Gabriela
+Rutkowska for more details. Figure 2 and 3 show some simulation
+results, illustrating that CSF velocities are significantly higher in
+Chiari patients than in healthy or post-operative individuals.</p>
+<img alt="../../_images/pat.png" src="../../_images/pat.png" />
+<p>Figure 2: Peak systolic velocity magnitude in three Chiari patients.</p>
+<img alt="../../_images/healthy.png" src="../../_images/healthy.png" />
+<p>Figure 3: Peak systolic velocity magnitude in one volunteer (left) and two postoperative patients with signs of
+tonsils at Foramen magnum.</p>
+<p>Optimal treatment of Chiari patients and the development of
+syringomyelia has to date been a puzzle for clinicians.  Only recently
+it has been discovered that CSF velocities in Chiari I patients differ
+significantly from normals, using modern PC-MR techniques.  From an
+engineering perspective, the increased velocities in Chiari patients
+suggest increased or focused pressure gradients and stress, or
+decreased resistance, which results in damage of the central nervous
+system in the spinal cord. Using the VMTK+FEniCS pipeline from medical
+images to CFD computations of velocity, pressure and stress of the
+cerebrospinal fluid, we may be on the right track to solve the 100
+year old enigma of this condition described by Hans Chiari. For more
+info about this condition we refer to the <a class="reference external" href="http://www.columnofhope.org">COH</a> and <a class="reference external" href="http://www.csfinfo.org">CSF</a>
+foundations.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Core components &mdash; FEniCS Project</title>
+    
+    <link rel="stylesheet" href="../_static/fenics.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FEniCS Project" href="../index.html" />
+    <link rel="up" title="About the FEniCS Project" href="index.html" />
+    <link rel="next" title="Features" href="features.html" />
+    <link rel="prev" title="About the FEniCS Project" href="index.html" />
+
+
+
+<link rel="shortcut icon" href="../_static/fenics.ico" />
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19595948-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="/"><img src="../_static/fenics_banner.png" width="900px" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+      <ul>
+	<li class="page_item"><a href="/about/" title="Find out more about the FEniCS project">About</a></li>
+	<li class="page_item"><a href="/download/" title="Obtain the FEniCS project">Download</a></li>
+	<li class="page_item"><a href="/documentation/" title="Learn how to use the FEniCS project">Documentation</a></li>
+	<li class="page_item"><a href="/applications/" title="Learn how others are using the FEniCS project">Applications</a></li>
+	<li class="page_item"><a href="/contributing/" title="Learn how to contribute to the FEniCS project">Contributing</a></li>
+	<li class="page_item"><a href="/citing/" title="Learn how to cite the FEniCS project">Citing</a></li>
+	<li class="page_item"><a href="/support/" title="Where to go for more help">Support</a></li>
+      </ul>
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p id="about-components">FEniCS is organized as a collection of interoperable components that
+together form the FEniCS Project. A short overview of these components
+is given below. Further information can be found in the <a class="reference internal" href="../book/index.html#book"><em>FEniCS
+Book</em></a> and on the <a class="reference external" href="https://bitbucket.org/fenics-project">Bitbucket page</a>.</p>
+<div class="section" id="core-components">
+<span id="about-components-core"></span><h1>Core components<a class="headerlink" href="#core-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dolfin">
+<span id="about-components-dolfin"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/dolfin">DOLFIN</a><a class="headerlink" href="#dolfin" title="Permalink to this headline">¶</a></h2>
+<p>DOLFIN is a C++/Python library that functions as the main user
+interface of FEniCS. A large part of the functionality of FEniCS is
+implemented as part of DOLFIN. It provides a problem solving
+environment for models based on partial differential equations and
+implements core parts of the functionality of FEniCS, including data
+structures and algorithms for computational meshes and finite element
+assembly. To provide a simple and consistent user interface, DOLFIN
+wraps the functionality of other FEniCS components and external
+software, and handles the communication between these components.</p>
+<div class="section" id="maintainers-in-alphabetical-order">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#maintainers-in-alphabetical-order" title="Permalink to this headline">¶</a></h3>
+<p>Johan Hake, Anders Logg, Garth N. Wells</p>
+</div>
+<div class="section" id="authors-past-and-present-in-chronological-order">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#authors-past-and-present-in-chronological-order" title="Permalink to this headline">¶</a></h3>
+<p>Anders Logg, Johan Hoffman, Garth N. Wells, Johan Jansson, Ola
+Skavhaug, Kent-Andre Mardal, Martin Sandve Alnes, Johan Hake, Niclas
+Jansson, Johannes Ring, Kristian B. Ølgaard, Marie Rognes</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/dolfin/raw/master/AUTHORS">AUTHORS</a>
+in the DOLFIN source tree.</p>
+</div>
+</div>
+<div class="section" id="ffc">
+<span id="about-components-ffc"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/ffc">FFC</a><a class="headerlink" href="#ffc" title="Permalink to this headline">¶</a></h2>
+<p>One of the key features of FEniCS is automated code generation for the
+general and efficient solution of finite element variational
+problems. FFC (FEniCS Form Compiler) is a compiler for variational
+forms. It generates efficient low-level C++ code (UFC) from a
+high-level mathematical description (UFL) of a finite element
+variational problem.</p>
+<img alt="../_images/ufl-ffc-ufc.png" class="align-center" src="../_images/ufl-ffc-ufc.png" />
+<div class="section" id="id1">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Anders Logg, Kristian B. Ølgaard, Marie Rognes, Garth N. Wells</p>
+</div>
+<div class="section" id="id2">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Anders Logg, Marie Rognes, Kristian Oelgaard, Garth N. Wells</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/ffc/raw/master/AUTHORS">AUTHORS</a> in
+the FFC source tree.</p>
+</div>
+</div>
+<div class="section" id="fiat">
+<span id="about-components-fiat"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/fiat">FIAT</a><a class="headerlink" href="#fiat" title="Permalink to this headline">¶</a></h2>
+<p>FIAT (FInite element Automatic Tabulator) supports generation of
+arbitrary order instances of the Lagrange elements on lines,
+triangles, and tetrahedra. It is also capable of generating arbitrary
+order instances of Jacobi-type quadrature rules on the same element
+shapes. Further, H(div) and H(curl) conforming finite element spaces
+such as the families of Raviart-Thomas, Brezzi-Douglas-Marini and
+Nedelec are supported on triangles and tetrahedra. Upcoming versions
+will also support Hermite and nonconforming elements.</p>
+<div class="section" id="id3">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Robert C. Kirby</p>
+</div>
+<div class="section" id="id4">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Robert C. Kirby, Anders Logg, Marie Rognes</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/fiat/raw/master/AUTHORS">AUTHORS</a> in
+the FIAT source tree.</p>
+</div>
+</div>
+<div class="section" id="instant">
+<span id="about-components-instant"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/instant">Instant</a><a class="headerlink" href="#instant" title="Permalink to this headline">¶</a></h2>
+<p>Instant is a Python module that allows for instant inlining of C and
+C++ code in Python. It is a small Python module built on top of SWIG
+and Distutils. Instant is used by FFC and DOLFIN for just-in-time
+(JIT) compilation of variational forms and expressions.</p>
+<div class="section" id="id5">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Add list of Instant maintainers.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Add list of Instant authors.</p>
+</div>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/instant/raw/master/AUTHORS">AUTHORS</a>
+in the Instant source tree.</p>
+</div>
+</div>
+<div class="section" id="ufc">
+<span id="about-components-ufc"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/ufc-deprecated">UFC</a><a class="headerlink" href="#ufc" title="Permalink to this headline">¶</a></h2>
+<p>UFC (Unified Form-assembly Code) is a unified framework for finite
+element assembly. More precisely, it defines a fixed interface for
+communicating low level routines (functions) for evaluating and
+assembling finite element variational forms. The UFC interface
+consists of a single header file ufc.h that specifies a C++ interface
+that must be implemented by code that complies with the UFC
+specification.</p>
+<div class="section" id="id7">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Anders Logg, Martin Sandve Alnes, Garth N. Wells</p>
+</div>
+<div class="section" id="id8">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Anders Logg, Martin Sandve Alnes, Kent-Andre Mardal, Ola Skavhaug,
+Hans Petter Langtangen, Garth N. Wells</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/ufc-deprecated/raw/master/AUTHORS">AUTHORS</a> in
+the UFC source tree.</p>
+</div>
+</div>
+<div class="section" id="ufl">
+<span id="about-components-ufl"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/ufl">UFL</a><a class="headerlink" href="#ufl" title="Permalink to this headline">¶</a></h2>
+<p>UFL (Unified Form Language) is a domain specific language for
+declaration of finite element discretizations of variational
+forms. More precisely, it defines a flexible interface for choosing
+finite element spaces and defining expressions for weak forms in a
+notation close to mathematical notation.</p>
+<div class="section" id="id9">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Martin Sandve Alnes</p>
+</div>
+<div class="section" id="id10">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>Martin Sandve Alnes, Anders Logg, Garth N. Wells, Kristian B. Ølgaard,
+Marie E. Rognes</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/ufl/raw/master/AUTHORS">AUTHORS</a> in
+the UFL source tree.</p>
+</div>
+</div>
+</div>
+<div class="section" id="additional-components">
+<span id="about-components-additional"></span><h1>Additional components<a class="headerlink" href="#additional-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ascot">
+<span id="about-components-ascot"></span><h2><a class="reference external" href="https://launchpad.net/ascot">ASCoT</a><a class="headerlink" href="#ascot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>Maintainers (in alphabetical order)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>Marie Rognes</p>
+</div>
+<div class="section" id="id12">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>Marie Rognes</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bazaar.launchpad.net/~ascot-core-team/ascot/main/view/head:/AUTHORS">AUTHORS</a>
+in the ASCoT source tree.</p>
+</div>
+</div>
+<div class="section" id="dorsal">
+<span id="about-components-dorsal"></span><h2><a class="reference external" href="https://bitbucket.org/fenics-project/dorsal">Dorsal</a><a class="headerlink" href="#dorsal" title="Permalink to this headline">¶</a></h2>
+<p>Dorsal is a shell script that simplifies the installation of FEniCS on
+operating platforms that we do not support with prebuilt binaries. It
+does this by automating the process of fetching, compiling, and
+installing the various FEniCS sub-projects and their requisite
+dependencies on many different platforms.</p>
+<div class="section" id="primary-author-and-maintainer">
+<h3>Primary author and maintainer<a class="headerlink" href="#primary-author-and-maintainer" title="Permalink to this headline">¶</a></h3>
+<p>Harish Narayanan</p>
+</div>
+<div class="section" id="major-contributors-ordered-by-number-of-commits">
+<h3>Major contributors (ordered by number of commits)<a class="headerlink" href="#major-contributors-ordered-by-number-of-commits" title="Permalink to this headline">¶</a></h3>
+<p>Garth N. Wells, Anders Logg, Joachim B. Haga, Johannes Ring, Roman
+Putanowicz and Ilmar Wilbers.</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bitbucket.org/fenics-project/dorsal/raw/master/AUTHORS">AUTHORS</a> in
+the Dorsal source tree.</p>
+</div>
+</div>
+</div>
+<div class="section" id="retired-components">
+<h1>Retired components<a class="headerlink" href="#retired-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="syfi-sfc">
+<span id="about-components-syfi"></span><h2><a class="reference external" href="https://launchpad.net/fenics-syfi">SyFi/SFC</a><a class="headerlink" href="#syfi-sfc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>Kent-Andre Mardal, Martin Sandve Alnes</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bazaar.launchpad.net/~syfi-core/fenics-syfi/main/view/head:/AUTHORS">AUTHORS</a>
+in the SyFi source tree.</p>
+</div>
+</div>
+<div class="section" id="viper">
+<span id="about-components-viper"></span><h2><a class="reference external" href="https://launchpad.net/fenics-viper">Viper</a><a class="headerlink" href="#viper" title="Permalink to this headline">¶</a></h2>
+<p>Viper is a minimalistic scientific plotter and run-time visualization
+module based on VTK. If installed, Viper provides built-in plotting
+for DOLFIN.</p>
+<div class="section" id="id14">
+<h3>Authors (past and present in chronological order)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>Ola Skavhaug</p>
+<p>For a full list of contributors, refer to the file <a class="reference external" href="https://bazaar.launchpad.net/~viper-core/fenics-viper/main/view/head:/AUTHORS">AUTHORS</a>
+in the Viper source tree.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="span-6">
+	<h4>Usage documentation</h4>
+	<ul>
+	  <li><a href="/documentation/tutorial/">Tutorial</a></li>
+	  <li><a href="/documentation/dolfin/dev/python/">Python API</a></li>
+	  <li><a href="/documentation/dolfin/dev/cpp/">C++ API</a></li>
+          <li><a href="/releases/">Release notes</a></li>
+	</ul>
+      </div>
+      <div class="span-6">
+	<h4>Developer resources</h4>
+	<ul>
+	  <li><a href="/buildbot/">Buildbot</a></li>
+	  <li><a href="/benchbot/">Benchbot</a></li>
+	  <li><a href="https://bitbucket.org/fenics-project/">FEniCS on Bitbucket</a></li>
+	  <li><a href="/pub/">File archive</a></li>
+	</ul>
+      </div>
+      <div class="span-6 last">
+	<h4>Search this site</h4>
+	<div id="searchbox">
+	  <form class="search" action="/search.html" method="get">
+	    <input type="text" name="q" size="18" />
+	    <input type="submit" value="Go" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+    </div>
+    &copy; Copyright 2015, <a href="/">The FEniCS Project</a>. (<a href="/disclaimer.html">Disclaimer</a>)
+  </div>
+</div>
+
+  </body>
+</html>
